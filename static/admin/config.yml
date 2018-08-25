@@ -30,6 +30,6 @@ collections:
           label: "Images",
           name: "images",
           widget: "list",
-          field: { label: Image, name: image, widget: image },
+          field: { name: image, widget: image },
         }
       - { label: "Body", name: "body", widget: "markdown" }
