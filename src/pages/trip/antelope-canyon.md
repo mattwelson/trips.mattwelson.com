@@ -1,8 +1,8 @@
 ---
 templateKey: trip
-title: Horseshoe Bend
+title: Antelope Canyon
 subtitle: Arizona
-date: "2018-08-25T17:19:05+12:00"
+date: "2018-08-22T17:19:05+12:00"
 images:
   - /img/chemex.jpg
 ---
