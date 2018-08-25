@@ -9,9 +9,9 @@ export const TripTemplate = ({
   content,
   contentComponent,
   description,
-  tags,
   title,
-  helmet
+  helmet,
+  date
 }) => {
   const PostContent = contentComponent || Content;
 
@@ -20,25 +20,12 @@ export const TripTemplate = ({
       {helmet || ""}
       <div className="container content">
         <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
-            <p>{description}</p>
-            <PostContent content={content} />
-            {tags && tags.length ? (
-              <div style={{ marginTop: `4rem` }}>
-                <h4>Tags</h4>
-                <ul className="taglist">
-                  {tags.map(tag => (
-                    <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-          </div>
+          <h4 className="trip__subtitle">{date}</h4>
+          <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
+            {title}
+          </h1>
+          <p>{description}</p>
+          <PostContent content={content} />
         </div>
       </div>
     </section>
@@ -61,9 +48,10 @@ const Trip = ({ data }) => {
       content={post.html}
       contentComponent={HTMLContent}
       description={post.frontmatter.description}
+      date={post.frontmatter.date}
       helmet={<Helmet title={`${post.frontmatter.title} | Blog`} />}
-      tags={post.frontmatter.tags}
       title={post.frontmatter.title}
+      subtitle={post.frontmatter.subtitle}
     />
   );
 };
@@ -82,8 +70,9 @@ export const pageQuery = graphql`
       id
       html
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "DD MMM")
         title
+        subtitle
       }
     }
   }
