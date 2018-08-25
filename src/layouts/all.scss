@@ -108,7 +108,7 @@ body {
 
 .menu--open {
   transform: translateY(0);
-  opacity: 1;
+  opacity: 0.98;
 }
 
 footer {
@@ -158,6 +158,10 @@ footer {
     padding: 2em;
     align-items: center;
     align-self: center;
+  }
+
+  .trip__description {
+    min-height: 7em;
   }
 
   .buttons {

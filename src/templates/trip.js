@@ -35,7 +35,9 @@ export const TripTemplate = ({
           </h4>
           <h1>{title}</h1>
           <p>{description}</p>
-          <PostContent content={content} />
+          <div className="trip__description">
+            <PostContent content={content} />
+          </div>
           <div className="buttons">
             <DirectionArrow target={previous}>&larr;</DirectionArrow>
             <DirectionArrow target={next}>&rarr;</DirectionArrow>
