@@ -20,8 +20,7 @@ body {
 }
 
 .menu-toggle {
-  /* width: 1em; */
-  justify-self: end;
+  text-align: right;
   align-self: start;
   cursor: pointer;
   opacity: 0.8;
@@ -104,6 +103,14 @@ body {
   padding-bottom: 1.666rem;
   color: white;
   text-decoration: none;
+  opacity: 0.8;
+  transform: scale(1);
+  transition: 0.3s all linear;
+
+  &:hover {
+    transform: scale(1.05);
+    opacity: 1;
+  }
 }
 
 .menu--open {
