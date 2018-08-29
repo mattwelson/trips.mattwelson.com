@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="60px" height="60px" viewBox="0 0 60 60" xml:space="preserve">
+<g>
+  <circle cx="30" cy="30" r="25" stroke="black" stroke-width="2" fill="white" />
+  <polyline points="35 20, 45 30, 35 40" stroke="black" stroke-width="2" fill="white"/>
+  <polyline points="45 30, 15 30" stroke="black" stroke-width="2" fill="white"/> 
+</g>
+</svg>

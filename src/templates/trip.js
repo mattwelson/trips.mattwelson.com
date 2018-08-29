@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { kebabCase } from "lodash";
-import Helmet from "react-helmet";
-import Link from "gatsby-link";
+import React from 'react'
+import PropTypes from 'prop-types'
+import { kebabCase } from 'lodash'
+import Helmet from 'react-helmet'
+import Link from 'gatsby-link'
 
-import DirectionArrow from "../components/DirectionArrow";
-import Menu from "../components/Menu";
-import Content, { HTMLContent } from "../components/Content";
+import DirectionArrow from '../components/DirectionArrow'
+import Menu from '../components/Menu'
+import Content, { HTMLContent } from '../components/Content'
 
 export const TripTemplate = ({
   content,
@@ -21,17 +21,17 @@ export const TripTemplate = ({
   next,
   previous
 }) => {
-  const PostContent = contentComponent || Content;
+  const PostContent = contentComponent || Content
 
   return (
     <section className="app">
-      {helmet || ""}
+      {helmet || ''}
       <div className="details">
         {others && <Menu trips={others} />}
         <div className="columns">
           <h4 className="trip__subtitle">
             {date}
-            {subtitle ? ` - ${subtitle}` : ""}
+            {subtitle ? ` - ${subtitle}` : ''}
           </h4>
           <h1>{title}</h1>
           <p>{description}</p>
@@ -39,8 +39,8 @@ export const TripTemplate = ({
             <PostContent content={content} />
           </div>
           <div className="buttons">
-            <DirectionArrow target={previous}>&larr;</DirectionArrow>
-            <DirectionArrow target={next}>&rarr;</DirectionArrow>
+            <DirectionArrow target={previous} direction="left" />
+            <DirectionArrow target={next} />
           </div>
         </div>
       </div>
@@ -50,8 +50,8 @@ export const TripTemplate = ({
         ))}
       </div>
     </section>
-  );
-};
+  )
+}
 
 TripTemplate.propTypes = {
   content: PropTypes.string.isRequired,
@@ -59,13 +59,13 @@ TripTemplate.propTypes = {
   description: PropTypes.string,
   title: PropTypes.string,
   helmet: PropTypes.instanceOf(Helmet)
-};
+}
 
 const Trip = ({ data }) => {
-  const { markdownRemark: post } = data;
+  const { markdownRemark: post } = data
   const current = data.allMarkdownRemark.edges.filter(
     edge => post.id === edge.node.id
-  )[0];
+  )[0]
 
   return (
     <TripTemplate
@@ -81,16 +81,16 @@ const Trip = ({ data }) => {
       next={current.next}
       previous={current.previous}
     />
-  );
-};
+  )
+}
 
 Trip.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.object
   })
-};
+}
 
-export default Trip;
+export default Trip
 
 export const pageQuery = graphql`
   query BlogPostByID($id: String!) {
@@ -137,4 +137,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

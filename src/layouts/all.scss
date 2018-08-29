@@ -123,6 +123,26 @@ footer {
   opacity: 0.7;
   text-align: center;
   padding: 3em 0 6em;
+
+  a,
+  a:visited,
+  a:hover,
+  a:active {
+    color: white;
+  }
+
+  .footer__github {
+    width: 3em;
+    filter: invert(1);
+  }
+}
+
+.arrow--left {
+  transform: rotate(180deg);
+}
+
+.arrow--disabled {
+  opacity: 0.5;
 }
 
 @media (min-width: 600px) {
