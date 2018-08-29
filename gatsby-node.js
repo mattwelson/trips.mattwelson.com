@@ -1,6 +1,7 @@
 const _ = require('lodash')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
+const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 
 exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators
@@ -13,12 +14,17 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       ) {
         edges {
           node {
+            fileAbsolutePath
             id
             fields {
               slug
             }
             frontmatter {
               templateKey
+              images
+            }
+            internal {
+              type
             }
           }
         }
@@ -40,6 +46,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
 
 const makeTrip = (createPage, edge, overridePath) => {
   const id = edge.node.id
+  fmImagesToRelativeHack(edge.node)
   createPage({
     path: overridePath || edge.node.fields.slug,
     component: path.resolve(
@@ -54,6 +61,7 @@ const makeTrip = (createPage, edge, overridePath) => {
 
 exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
   const { createNodeField } = boundActionCreators
+  fmImagesToRelativeHack(node)
 
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })
@@ -61,6 +69,44 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
       name: `slug`,
       node,
       value
+    })
+  }
+}
+
+const fileNodes = []
+fmImagesToRelativeHack = node => {
+  fileNodes.push(node)
+  if (node.internal.type === `MarkdownRemark`) {
+    // Convert paths in frontmatter to relative
+    function makeRelative(value) {
+      if (_.isString(value) && path.isAbsolute(value)) {
+        let imagePath
+        const foundImageNode = _.find(fileNodes, file => {
+          if (!file.dir) return
+          imagePath = path.join(file.dir, '..', value)
+          return file.absolutePath === imagePath
+        })
+        if (foundImageNode) {
+          return path.relative(
+            path.join(node.fileAbsolutePath, '..'),
+            imagePath
+          )
+        }
+      }
+      return value
+    }
+    _.each(node.frontmatter, (value, key) => {
+      if (_.isArray(value)) {
+        node.frontmatter[key] = _.map(value, val => {
+          if (_.isObject(val)) {
+            return _.mapValues(val, val2 => makeRelative(val2))
+          } else {
+            return makeRelative(val)
+          }
+        })
+      } else {
+        node.frontmatter[key] = makeRelative(value)
+      }
     })
   }
 }

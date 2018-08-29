@@ -348,6 +348,7 @@ footer {
   .image--selected img {
     transform: translateX(0);
     opacity: 1;
+    z-index: 1;
   }
 
   .image--selected ~ .trip__image img {
