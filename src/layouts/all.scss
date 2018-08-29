@@ -69,7 +69,7 @@ body {
   display: grid;
 }
 
-.trip__images .trips__image {
+.trip__images .trip__image img {
   margin-bottom: 0;
   display: block;
   max-width: 100%;
@@ -159,6 +159,10 @@ footer {
   opacity: 0.3;
 }
 
+.trip__images--desktop {
+  display: none;
+}
+
 @media (min-width: 600px) {
   .App {
     text-align: center;
@@ -173,6 +177,14 @@ footer {
 @media (min-width: 800px) {
   body {
     padding: 0 3em;
+  }
+
+  .trip__images--mobile {
+    display: none;
+  }
+
+  .trip__images--desktop {
+    display: grid;
   }
 
   .menu-toggle {
@@ -221,7 +233,7 @@ footer {
     grid-template-columns: auto;
   }
 
-  .trip__images .trip__image {
+  .trip__images--desktop .trip__image {
     grid-row: 1 / -1;
     grid-column: 1;
     min-height: 80vh;
@@ -258,7 +270,7 @@ footer {
 
   .reveal {
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
 
     &:after {
       content: '';
@@ -280,5 +292,66 @@ footer {
 
   .delay {
     animation-delay: 0.4s;
+  }
+  .delay2 {
+    animation-delay: 0.6s;
+  }
+
+  .trip__image-dots-box {
+    grid-row: 1;
+    grid-column: 1;
+    z-index: 1;
+    align-self: end;
+    transform: translateY(2em);
+    overflow: hidden;
+  }
+
+  .trip__image-dots {
+    display: grid;
+    grid-gap: 1em;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
+  .image__arrow {
+    opacity: 0.2;
+  }
+
+  .dot {
+    width: 0.7em;
+    height: 0.7em;
+    border-radius: 50%;
+    background: white;
+    opacity: 0.5;
+    transition: 0.2s;
+    transform: scale(1);
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+  }
+
+  .dot--selected {
+    opacity: 0.9;
+  }
+
+  .trip__image img {
+    transition: 1s;
+    transform: translateX(-100%);
+    opacity: 0.5;
+  }
+
+  .image--selected img {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .image--selected ~ .trip__image img {
+    transform: translateX(100%);
+    opacity: 0.5;
   }
 }

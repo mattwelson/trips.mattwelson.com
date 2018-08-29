@@ -7,6 +7,7 @@ import Link from 'gatsby-link'
 import DirectionArrow from '../components/DirectionArrow'
 import Menu from '../components/Menu'
 import Content, { HTMLContent } from '../components/Content'
+import DesktopPhotos from '../components/DesktopPhotos'
 
 export const TripTemplate = ({
   content,
@@ -46,9 +47,10 @@ export const TripTemplate = ({
           </div>
         </div>
       </div>
-      <div className="trip__images">
+      <DesktopPhotos images={images} />
+      <div className="trip__images trip__images--mobile">
         {images.map((img, i) => (
-          <div className="trip__image reveal" key={i}>
+          <div className="trip__image" key={i}>
             <img id={img} src={img} key={i} />
           </div>
         ))}
