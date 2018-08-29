@@ -45,8 +45,8 @@ export const TripTemplate = ({
         </div>
       </div>
       <div className="trip__image">
-        {images.map(img => (
-          <img id={img} src={img} />
+        {images.map((img, i) => (
+          <img id={img} src={img} key={i} />
         ))}
       </div>
     </section>

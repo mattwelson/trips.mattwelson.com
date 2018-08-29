@@ -24,7 +24,7 @@ const Footer = () => (
       .
     </p>
     <a href={settings.github} target="_blank">
-      <img src={githubLogo} class="footer__github" />
+      <img src={githubLogo} className="footer__github" />
     </a>
   </footer>
 )
