@@ -28,15 +28,17 @@ export const TripTemplate = ({
       {helmet || ''}
       <div className="details">
         {others && <Menu trips={others} />}
-        <div className="columns">
-          <h4 className="trip__subtitle">
-            {date}
-            {subtitle ? ` - ${subtitle}` : ''}
-          </h4>
-          <h1>{title}</h1>
-          <p>{description}</p>
-          <div className="trip__description">
-            <PostContent content={content} />
+        <div>
+          <div className="fade delay">
+            <h4 className="trip__subtitle">
+              {date}
+              {subtitle ? ` - ${subtitle}` : ''}
+            </h4>
+            <h1>{title}</h1>
+            <p>{description}</p>
+            <div className="trip__description">
+              <PostContent content={content} />
+            </div>
           </div>
           <div className="buttons">
             <DirectionArrow target={previous} direction="left" />
@@ -44,9 +46,11 @@ export const TripTemplate = ({
           </div>
         </div>
       </div>
-      <div className="trip__image">
+      <div className="trip__images">
         {images.map((img, i) => (
-          <img id={img} src={img} key={i} />
+          <div className="trip__image reveal" key={i}>
+            <img id={img} src={img} key={i} />
+          </div>
         ))}
       </div>
     </section>

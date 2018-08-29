@@ -8,18 +8,19 @@ const DirectionArrow = ({ target, direction = 'right' }) => (
       <img
         src={arrowSvg}
         alt="No trip"
-        className={`arrow--${direction} arrow--disabled`}
+        className={`arrow arrow--${direction} arrow--disabled`}
       />
     )}
     {!!target && (
       <Link
         to={target.fields.slug}
         rel={direction === 'right' ? 'next' : 'prev'}
+        className="arrow__link"
       >
         <img
           src={arrowSvg}
           alt={target.frontmatter.title}
-          className={`arrow--${direction}`}
+          className={`arrow arrow--${direction}`}
         />
       </Link>
     )}
