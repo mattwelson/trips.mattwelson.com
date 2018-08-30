@@ -6,6 +6,7 @@ const TripPreview = ({ entry, widgetFor }) => (
   <TripTemplate
     content={widgetFor('body')}
     description={entry.getIn(['data', 'description'])}
+    date={entry.getIn(['data', 'date'])}
     tags={entry.getIn(['data', 'tags'])}
     title={entry.getIn(['data', 'title'])}
     subtitle={entry.getIn(['data', 'subtitle'])}
