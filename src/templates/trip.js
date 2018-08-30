@@ -146,7 +146,7 @@ export const pageQuery = graphql`
     images: allImageSharp(filter: { id: { regex: $imgRegex } }) {
       edges {
         node {
-          sizes {
+          sizes(quality: 90) {
             ...GatsbyImageSharpSizes_withWebp
           }
         }
