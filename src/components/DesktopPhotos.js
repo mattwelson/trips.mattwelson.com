@@ -11,7 +11,6 @@ class DesktopPhotos extends React.Component {
   render() {
     const { images } = this.props
     const { imageIndex } = this.state
-    console.log(images)
     return (
       <div className="trip__images trip__images--desktop">
         {images.length > 1 && (

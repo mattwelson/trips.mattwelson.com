@@ -163,6 +163,12 @@ footer {
   display: none;
 }
 
+.error-page {
+  color: white;
+  padding: 3em;
+  text-align: center;
+}
+
 @media (min-width: 600px) {
   .App {
     text-align: center;
@@ -357,5 +363,9 @@ footer {
   .image--selected ~ .trip__image img {
     transform: translateX(100%);
     opacity: 0.5;
+  }
+
+  .gatsby-image-wrapper {
+    height: 100%;
   }
 }

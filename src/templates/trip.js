@@ -70,10 +70,16 @@ TripTemplate.propTypes = {
 
 const Trip = ({ data }) => {
   const { markdownRemark: post } = data
-  const current = data.allMarkdownRemark.edges.filter(
+  const current = data.allMarkdownRemark.edges.find(
     edge => post.id === edge.node.id
-  )[0]
-  console.log(data.images)
+  )
+
+  const images = post.frontmatter.images.map(imgName =>
+    data.images.edges.find(({ node }) => {
+      return imgName.indexOf(node.sizes.originalName) > -1
+    })
+  )
+
   return (
     <TripTemplate
       content={post.html}
@@ -83,7 +89,7 @@ const Trip = ({ data }) => {
       helmet={<Helmet title={`${post.frontmatter.title}`} />}
       title={post.frontmatter.title}
       subtitle={post.frontmatter.subtitle}
-      images={data.images.edges}
+      images={images}
       others={data.allMarkdownRemark.edges}
       next={current.next}
       previous={current.previous}
@@ -148,6 +154,7 @@ export const pageQuery = graphql`
         node {
           sizes(quality: 90) {
             ...GatsbyImageSharpSizes_withWebp
+            originalName
           }
         }
       }
