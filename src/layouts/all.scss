@@ -240,6 +240,7 @@ footer {
     min-height: 80vh;
     display: grid;
     align-items: stretch;
+    justify-content: stretch;
 
     & > img {
       object-fit: cover;

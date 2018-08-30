@@ -22,7 +22,7 @@ class Menu extends React.Component {
           <div className="menu__list">
             <div onClick={e => e.stopPropagation()}>
               {trips.map(({ node: trip }) => (
-                <h1 key={trip.fields.title}>
+                <h1 key={trip.fields.slug}>
                   <Link to={trip.fields.slug}>{trip.frontmatter.title}</Link>
                 </h1>
               ))}

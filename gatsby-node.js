@@ -44,11 +44,17 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
   })
 }
 
+// Strips the trip/ from the slug
 const cleanSlug = p => /trip(.*)/.exec(p)[1]
+
+// Creates a regex that can match images based on their id
+const imgRegex = images =>
+  `/${images.map(img => `${/img\/(.*)/.exec(img)[0]}\\sabsPath`).join('|')}/`
 
 const makeTrip = (createPage, edge, overridePath) => {
   const id = edge.node.id
   fmImagesToRelativeHack(edge.node)
+  console.log(imgRegex(edge.node.frontmatter.images))
   createPage({
     path: overridePath || edge.node.fields.slug,
     component: path.resolve(
@@ -56,7 +62,8 @@ const makeTrip = (createPage, edge, overridePath) => {
     ),
     // additional data can be passed via context
     context: {
-      id
+      id,
+      imgRegex: imgRegex(edge.node.frontmatter.images)
     }
   })
 }

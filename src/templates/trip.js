@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
+import Img from 'gatsby-image'
 
 import DirectionArrow from '../components/DirectionArrow'
 import Menu from '../components/Menu'
@@ -49,9 +50,9 @@ export const TripTemplate = ({
       </div>
       <DesktopPhotos images={images} />
       <div className="trip__images trip__images--mobile">
-        {images.map((img, i) => (
+        {images.map(({ node }, i) => (
           <div className="trip__image" key={i}>
-            <img id={img} src={img} key={i} />
+            <Img key={node.originalName} sizes={node.sizes} />
           </div>
         ))}
       </div>
@@ -72,7 +73,7 @@ const Trip = ({ data }) => {
   const current = data.allMarkdownRemark.edges.filter(
     edge => post.id === edge.node.id
   )[0]
-
+  console.log(data.images)
   return (
     <TripTemplate
       content={post.html}
@@ -82,7 +83,7 @@ const Trip = ({ data }) => {
       helmet={<Helmet title={`${post.frontmatter.title}`} />}
       title={post.frontmatter.title}
       subtitle={post.frontmatter.subtitle}
-      images={post.frontmatter.images}
+      images={data.images.edges}
       others={data.allMarkdownRemark.edges}
       next={current.next}
       previous={current.previous}
@@ -99,7 +100,7 @@ Trip.propTypes = {
 export default Trip
 
 export const pageQuery = graphql`
-  query BlogPostByID($id: String!) {
+  query BlogPostByID($id: String!, $imgRegex: String!) {
     markdownRemark(id: { eq: $id }) {
       id
       html
@@ -138,6 +139,15 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
+          }
+        }
+      }
+    }
+    images: allImageSharp(filter: { id: { regex: $imgRegex } }) {
+      edges {
+        node {
+          sizes {
+            ...GatsbyImageSharpSizes_withWebp
           }
         }
       }

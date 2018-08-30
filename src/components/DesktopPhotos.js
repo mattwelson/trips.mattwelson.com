@@ -1,4 +1,5 @@
 import React from 'react'
+import Img from 'gatsby-image'
 
 class DesktopPhotos extends React.Component {
   state = {
@@ -10,6 +11,7 @@ class DesktopPhotos extends React.Component {
   render() {
     const { images } = this.props
     const { imageIndex } = this.state
+    console.log(images)
     return (
       <div className="trip__images trip__images--desktop">
         {images.length > 1 && (
@@ -27,14 +29,14 @@ class DesktopPhotos extends React.Component {
             </div>
           </div>
         )}
-        {images.map((img, i) => (
+        {images.map(({ node }, i) => (
           <div
             className={`trip__image reveal ${
               i === imageIndex ? 'image--selected' : ''
             }`}
             key={i}
           >
-            <img src={img} key={i} />
+            <Img sizes={node.sizes} key={i} />
           </div>
         ))}
       </div>
