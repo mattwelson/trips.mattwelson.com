@@ -5,31 +5,33 @@ backend:
 media_folder: static/img
 public_folder: /img
 
+publish_mode: editorial_workflow
+
 collections:
-  - name: "trip"
-    label: "Trip"
-    folder: "src/pages/trip"
+  - name: 'trip'
+    label: 'Trip'
+    folder: 'src/pages/trip'
     create: true
-    slug: "{{slug}}"
+    slug: '{{slug}}'
     fields:
       - {
-          label: "Template Key",
-          name: "templateKey",
-          widget: "hidden",
-          default: "trip",
+          label: 'Template Key',
+          name: 'templateKey',
+          widget: 'hidden',
+          default: 'trip',
         }
-      - { label: "Title", name: "title", widget: "string" }
+      - { label: 'Title', name: 'title', widget: 'string' }
       - {
-          label: "Subtitle",
-          name: "subtitle",
-          widget: "string",
+          label: 'Subtitle',
+          name: 'subtitle',
+          widget: 'string',
           required: false,
         }
-      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: 'Date', name: 'date', widget: 'datetime' }
       - {
-          label: "Images",
-          name: "images",
-          widget: "list",
+          label: 'Images',
+          name: 'images',
+          widget: 'list',
           field: { name: image, widget: image },
         }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: 'Body', name: 'body', widget: 'markdown' }

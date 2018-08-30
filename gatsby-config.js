@@ -4,6 +4,8 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-catch-links',
+    'gatsby-plugin-netlify-cache',
     'gatsby-plugin-sass',
     {
       resolve: `gatsby-plugin-typography`,
@@ -26,9 +28,17 @@ module.exports = {
       }
     },
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/static/img`,
+        name: 'staticImages'
+      }
+    },
+    {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
+          'gatsby-remark-external-links',
           'gatsby-remark-relative-images',
           {
             resolve: `gatsby-remark-images`,

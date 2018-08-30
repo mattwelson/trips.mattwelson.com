@@ -4,7 +4,7 @@ const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 
 exports.createPages = ({ boundActionCreators, graphql }) => {
-  const { createPage } = boundActionCreators
+  const { createPage, createNodeField } = boundActionCreators
 
   return graphql(`
     {
@@ -44,6 +44,8 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
   })
 }
 
+const cleanSlug = p => /trip(.*)/.exec(p)[1]
+
 const makeTrip = (createPage, edge, overridePath) => {
   const id = edge.node.id
   fmImagesToRelativeHack(edge.node)
@@ -64,7 +66,7 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
   fmImagesToRelativeHack(node)
 
   if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
+    const value = cleanSlug(createFilePath({ node, getNode }))
     createNodeField({
       name: `slug`,
       node,
