@@ -167,6 +167,13 @@ footer {
   color: white;
   padding: 3em;
   text-align: center;
+
+  a,
+  a:visited,
+  a:hover,
+  a:active {
+    color: white;
+  }
 }
 
 @media (min-width: 600px) {
