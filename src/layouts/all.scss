@@ -326,9 +326,17 @@ footer {
 
   .delay {
     animation-delay: 0.4s;
+
+    &:after {
+      animation-delay: 0.4s;
+    }
   }
   .delay2 {
     animation-delay: 0.6s;
+
+    &:after {
+      animation-delay: 0.6s;
+    }
   }
 
   .trip__image-dots-box {

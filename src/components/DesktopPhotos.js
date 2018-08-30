@@ -30,7 +30,7 @@ class DesktopPhotos extends React.Component {
         )}
         {images.map(({ node }, i) => (
           <div
-            className={`trip__image reveal ${
+            className={`trip__image reveal delay ${
               i === imageIndex ? 'image--selected' : ''
             }`}
             key={i}

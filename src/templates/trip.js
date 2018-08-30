@@ -31,7 +31,7 @@ export const TripTemplate = ({
       <div className="details">
         {others && <Menu trips={others} />}
         <div>
-          <div className="fade delay">
+          <div className="fade">
             <h4 className="trip__subtitle">
               {date}
               {subtitle ? ` - ${subtitle}` : ''}
