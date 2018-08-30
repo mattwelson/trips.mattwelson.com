@@ -54,7 +54,6 @@ const imgRegex = images =>
 const makeTrip = (createPage, edge, overridePath) => {
   const id = edge.node.id
   fmImagesToRelativeHack(edge.node)
-  console.log(imgRegex(edge.node.frontmatter.images))
   createPage({
     path: overridePath || edge.node.fields.slug,
     component: path.resolve(
