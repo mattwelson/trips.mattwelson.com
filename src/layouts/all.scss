@@ -305,7 +305,7 @@ footer {
       left: 0;
       background: $accent;
       z-index: 5;
-      animation: reveallerRight 0.9s 0.8s forwards;
+      animation: reveallerRight 0.8s 0.7s forwards;
     }
 
     &:after {
@@ -318,7 +318,7 @@ footer {
       left: 0;
       background: white;
       z-index: 10;
-      animation: reveallerRight 0.9s forwards;
+      animation: reveallerRight 0.8s forwards;
     }
   }
 
