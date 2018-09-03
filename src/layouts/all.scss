@@ -327,6 +327,14 @@ footer {
     animation: fadeDown 0.5s forwards;
   }
 
+  .delay-half {
+    animation-delay: 0.2s;
+
+    &:after {
+      animation-delay: 0.2s;
+    }
+  }
+
   .delay {
     animation-delay: 0.4s;
 
