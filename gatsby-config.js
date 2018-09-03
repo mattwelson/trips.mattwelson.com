@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby + Netlify CMS Starter'
+    title: 'Matt Welson',
+    siteUrl: 'https://trips.mattwelson.com'
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -60,6 +61,8 @@ module.exports = {
         modulePath: `${__dirname}/src/cms/cms.js`
       }
     },
+    `gatsby-plugin-sitemap`,
+    'gatsby-plugin-robots-txt',
     'gatsby-plugin-netlify' // make sure to keep it last in the array
   ]
 }
