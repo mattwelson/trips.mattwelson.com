@@ -184,7 +184,7 @@ export const pageQuery = graphql`
             ...GatsbyImageSharpSizes_withWebp
             originalName
           }
-          resize(width: 2000, height: 2000, quality: 90) {
+          resize(width: 1200, height: 1200, quality: 90) {
             src
           }
         }
