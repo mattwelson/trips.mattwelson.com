@@ -63,7 +63,7 @@ export const TripTemplate = ({
         <div className="trip__iamges trip__images--cms">
           {images.map((image, i) => (
             <div className="trip__image" key={i}>
-              <img key={image} sizes={image} />
+              <img key={image} src={image} />
             </div>
           ))}
         </div>
