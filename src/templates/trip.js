@@ -92,13 +92,25 @@ const Trip = ({ data }) => {
     })
   )
 
+  const canonical = `https://trips.mattwelson.com${post.fields.slug}`
+
   return (
     <TripTemplate
       content={post.html}
       contentComponent={HTMLContent}
       description={post.frontmatter.description}
       date={post.frontmatter.date}
-      helmet={<Helmet title={`${post.frontmatter.title}`} />}
+      helmet={
+        <Helmet title={`${post.frontmatter.title} | Matt Welson`}>
+          <meta property="og:title" content={post.frontmatter.title} />
+          <meta property="og:description" content={post.excerpt} />
+          <meta property="og:image" content={images[0].node.resize.src} />
+          <meta property="og:url" content={canonical} />
+          <meta name="twitter:card" content="summary_large_image" />
+
+          <link rel="canonical" href={canonical} />
+        </Helmet>
+      }
       title={post.frontmatter.title}
       subtitle={post.frontmatter.subtitle}
       images={images}
@@ -122,11 +134,15 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       html
+      excerpt(pruneLength: 200)
       frontmatter {
         date(formatString: "DD MMM")
         title
         subtitle
         images
+      }
+      fields {
+        slug
       }
     }
     allMarkdownRemark(
@@ -167,6 +183,9 @@ export const pageQuery = graphql`
           sizes(quality: 90) {
             ...GatsbyImageSharpSizes_withWebp
             originalName
+          }
+          resize(width: 2000, height: 2000, quality: 90) {
+            src
           }
         }
       }
