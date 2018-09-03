@@ -11,6 +11,7 @@ const TripPreview = ({ entry, widgetFor }) => (
     title={entry.getIn(['data', 'title'])}
     subtitle={entry.getIn(['data', 'subtitle'])}
     images={entry.getIn(['data', 'images'])}
+    cms
   />
 )
 

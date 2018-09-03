@@ -21,7 +21,8 @@ export const TripTemplate = ({
   date,
   others,
   next,
-  previous
+  previous,
+  cms
 }) => {
   const PostContent = contentComponent || Content
 
@@ -48,14 +49,25 @@ export const TripTemplate = ({
           </div>
         </div>
       </div>
-      <DesktopPhotos images={images} />
-      <div className="trip__images trip__images--mobile">
-        {images.map(({ node }, i) => (
-          <div className="trip__image" key={i}>
-            <Img key={node.originalName} sizes={node.sizes} />
-          </div>
-        ))}
-      </div>
+      {!cms && <DesktopPhotos images={images} />}
+      {!cms && (
+        <div className="trip__images trip__images--mobile">
+          {images.map(({ node }, i) => (
+            <div className="trip__image" key={i}>
+              <Img key={node.originalName} sizes={node.sizes} />
+            </div>
+          ))}
+        </div>
+      )}
+      {cms && (
+        <div className="trip__iamges trip__images--cms">
+          {images.map((image, i) => (
+            <div className="trip__image" key={i}>
+              <img key={image} sizes={image} />
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   )
 }
