@@ -104,9 +104,13 @@ const Trip = ({ data }) => {
         <Helmet title={`${post.frontmatter.title} | Matt Welson`}>
           <meta property="og:title" content={post.frontmatter.title} />
           <meta property="og:description" content={post.excerpt} />
-          <meta property="og:image" content={images[0].node.resize.src} />
+          <meta
+            property="og:image"
+            content={`https://trips.mattwelson.com${images[0].node.resize.src}`}
+          />
           <meta property="og:url" content={canonical} />
           <meta name="twitter:card" content="summary_large_image" />
+          <meta property="og:site_name" content="Trips with Matt Welson" />
 
           <link rel="canonical" href={canonical} />
         </Helmet>
