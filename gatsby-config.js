@@ -1,3 +1,6 @@
+const pixrem = require('pixrem')
+const autoprefixer = require('autoprefixer')
+
 module.exports = {
   siteMetadata: {
     title: 'Matt Welson',
@@ -7,7 +10,18 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-netlify-cache',
-    'gatsby-plugin-sass',
+    {
+      resolve: `gatsby-plugin-postcss-sass`,
+      options: {
+        postCssPlugins: [
+          pixrem(),
+          autoprefixer({
+            browsers: ['last 2 versions'],
+            grid: true
+          })
+        ]
+      }
+    },
     {
       resolve: `gatsby-plugin-typography`,
       options: {
