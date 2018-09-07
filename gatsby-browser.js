@@ -1,7 +1,7 @@
 // Prevents animations running in the first 2 seconds of page load
 // Previously the framerate was dropping a lot
-exports.onInitialClientRender = () => {
-  console.log('render')
+exports.onClientEntry = () => {
+  console.log('client entry')
   setTimeout(
     () => {
       console.log('remove preload')
