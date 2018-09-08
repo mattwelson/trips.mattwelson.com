@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 import './all.scss'
 
 const TemplateWrapper = ({ children, data }) => (
-  <div className="preload">
+  <div className="">
     <Helmet title="Matt Welson" />
     <div>{children()}</div>
     <Footer />
