@@ -27,11 +27,11 @@ export const TripTemplate = ({
   const PostContent = contentComponent || Content
 
   return (
-    <section className="app">
+    <div className="app">
       {helmet || ''}
-      <div className="details">
-        {others && <Menu trips={others} />}
-        <div>
+      {others && <Menu trips={others} />}
+      <section className="trip">
+        <div className="details">
           <div className="fade">
             <h4 className="trip__subtitle">
               {date}
@@ -48,28 +48,30 @@ export const TripTemplate = ({
             <DirectionArrow target={next} />
           </div>
         </div>
-      </div>
-      {!cms && <DesktopPhotos images={images} />}
-      {!cms && (
-        <div className="trip__images trip__images--mobile">
-          {images.map(({ node }, i) => (
-            <div className="trip__image" key={i}>
-              <Img key={node.originalName} sizes={node.sizes} />
-            </div>
-          ))}
-        </div>
-      )}
-      {cms && (
-        <div className="trip__images trip__images--cms">
-          {images &&
-            images.map((image, i) => (
+        {!cms && (
+          <DesktopPhotos images={images} next={next} previous={previous} />
+        )}
+        {!cms && (
+          <div className="trip__images trip__images--mobile">
+            {images.map(({ node }, i) => (
               <div className="trip__image" key={i}>
-                <img key={image} src={image} />
+                <Img key={node.originalName} sizes={node.sizes} />
               </div>
             ))}
-        </div>
-      )}
-    </section>
+          </div>
+        )}
+        {cms && (
+          <div className="trip__images trip__images--cms">
+            {images &&
+              images.map((image, i) => (
+                <div className="trip__image" key={i}>
+                  <img key={image} src={image} />
+                </div>
+              ))}
+          </div>
+        )}
+      </section>
+    </div>
   )
 }
 
