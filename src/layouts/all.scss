@@ -90,7 +90,6 @@ body {
   background: $black;
   color: white;
   display: grid;
-  grid-template-rows: 30%;
   align-content: start;
   justify-items: center;
   transform: translateY(-100%);
@@ -99,13 +98,10 @@ body {
   z-index: 10;
   padding: 1em;
   padding-top: 4em;
+  overflow-y: auto;
 }
 
 .menu h1 a {
-  display: grid;
-  align-content: end;
-  margin-bottom: 0;
-  padding-bottom: 1.666rem;
   color: white;
   text-decoration: none;
   opacity: 0.8;
@@ -115,7 +111,7 @@ body {
 
   &.menu__item--active {
     text-decoration: underline;
-    opacity: 0.5;
+    color: lighten($accent, 10%);
   }
 }
 
@@ -255,10 +251,15 @@ footer {
     filter: invert(1);
     transition: 0.2s linear all;
     transform: scale(1) rotate(0);
+    padding: 0;
 
     &:hover {
       transform: scale(1.05) rotate(3deg);
     }
+  }
+
+  .menu h1 {
+    margin-bottom: 2.6rem;
   }
 
   .trip {
@@ -462,7 +463,7 @@ footer {
   .image-arrow {
     cursor: pointer;
     color: white;
-    background: $black;
+    background: $accent;
     text-decoration: none;
     padding: 1em 2em;
     display: grid;
