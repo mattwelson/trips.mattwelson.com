@@ -81,6 +81,10 @@ body {
   max-width: 100%;
 }
 
+.trip__image {
+  margin-bottom: 2em;
+}
+
 .menu {
   position: fixed;
   left: 0;
@@ -231,6 +235,14 @@ footer {
   .trip__images--mobile {
     display: none;
   }
+  
+  .app {
+    background: none;
+  }
+  
+  .trip {
+    background: white;
+  }
 
   .trip__images--desktop {
     display: grid;
@@ -305,6 +317,7 @@ footer {
     display: grid;
     align-items: stretch;
     justify-content: stretch;
+    margin-bottom: 0;
 
     & > img {
       object-fit: cover;
@@ -456,7 +469,7 @@ footer {
     z-index: 10;
     grid-row: 1;
     grid-column: 1;
-    align-self: center;
+    align-self: end;
     overflow: hidden;
   }
 
