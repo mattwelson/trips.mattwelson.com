@@ -10,8 +10,11 @@ body {
   opacity: 0.5;
 }
 
-.trip {
+.app {
   background: white;
+}
+
+.trip {
   display: grid;
 }
 
@@ -26,6 +29,8 @@ body {
   cursor: pointer;
   opacity: 0.8;
   transition: 0.2s linear all;
+  padding: 1em;
+  margin: 0;
 
   &:hover {
     opacity: 1;
@@ -92,7 +97,8 @@ body {
   opacity: 0.3;
   transition: 0.5s ease-in-out all;
   z-index: 10;
-  padding-top: 20%;
+  padding: 1em;
+  padding-top: 4em;
 }
 
 .menu h1 a {
@@ -105,10 +111,11 @@ body {
   opacity: 0.8;
   transform: scale(1);
   transition: 0.3s all linear;
+  font-size: 0.7em;
 
-  &:hover {
-    transform: scale(1.05);
-    opacity: 1;
+  &.menu__item--active {
+    text-decoration: underline;
+    opacity: 0.5;
   }
 }
 
@@ -165,6 +172,7 @@ footer {
 }
 
 .arrow__helper {
+  display: none;
   opacity: 0;
   transform: translateY(-50%);
   transition: 0.3s;
@@ -173,7 +181,6 @@ footer {
 }
 
 .arrow:hover + .arrow__helper {
-  display: block;
   opacity: 1;
   transform: translateY(0);
 }
@@ -235,6 +242,10 @@ footer {
       1px
     ); // removes a slither of white on the right of the image
     grid-template-columns: auto 1fr auto;
+  }
+
+  .arrow__helper {
+    display: block;
   }
 
   .menu-toggle {
@@ -507,5 +518,14 @@ footer {
 
   .gatsby-image-wrapper {
     height: 100%;
+  }
+
+  .menu h1 a {
+    font-size: 1em;
+  }
+
+  .menu h1 a:hover {
+    transform: scale(1.05);
+    opacity: 1;
   }
 }

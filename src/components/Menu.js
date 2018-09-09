@@ -9,7 +9,7 @@ class Menu extends React.Component {
   toggleMenu = () => this.setState(({ open }) => ({ open: !open }))
 
   render() {
-    const { trips } = this.props
+    const { trips, activeSlug } = this.props
     return (
       <div>
         <h6 className="menu-toggle" onClick={this.toggleMenu}>
@@ -23,7 +23,16 @@ class Menu extends React.Component {
             <div onClick={e => e.stopPropagation()}>
               {trips.map(({ node: trip }) => (
                 <h1 key={trip.fields.slug}>
-                  <Link to={trip.fields.slug}>{trip.frontmatter.title}</Link>
+                  <Link
+                    to={trip.fields.slug}
+                    className={
+                      activeSlug === trip.fields.slug
+                        ? 'menu__item--active'
+                        : ''
+                    }
+                  >
+                    {trip.frontmatter.title}
+                  </Link>
                 </h1>
               ))}
             </div>

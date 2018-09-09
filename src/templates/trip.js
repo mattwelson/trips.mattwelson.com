@@ -22,14 +22,15 @@ export const TripTemplate = ({
   others,
   next,
   previous,
-  cms
+  cms,
+  activeSlug
 }) => {
   const PostContent = contentComponent || Content
 
   return (
     <div className="app">
       {helmet || ''}
-      {others && <Menu trips={others} />}
+      {others && <Menu trips={others} activeSlug={activeSlug} />}
       <section className="trip">
         <div className="details">
           <div className="fade">
@@ -124,6 +125,7 @@ const Trip = ({ data }) => {
       others={data.allMarkdownRemark.edges}
       next={current.next}
       previous={current.previous}
+      activeSlug={post.fields.slug}
     />
   )
 }
