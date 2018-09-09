@@ -14,19 +14,22 @@ class DesktopPhotos extends React.Component {
     const { images, next, previous } = this.props
     const { imageIndex } = this.state
 
-    const arrowLeft = previous && (
+    const hasImageLeft = imageIndex > 0
+    const hasImageRight = imageIndex < images.length - 1
+
+    const arrowLeft = (previous || hasImageLeft) && (
       <ImageArrow
         direction="left"
         target={previous}
-        hasImage={imageIndex > 0}
+        hasImage={hasImageLeft}
         onClick={() => this.select(imageIndex - 1)}
       />
     )
-    const arrowRight = next && (
+    const arrowRight = (next || hasImageRight) && (
       <ImageArrow
         direction="right"
         target={next}
-        hasImage={imageIndex < images.length - 1}
+        hasImage={hasImageRight}
         onClick={() => this.select(imageIndex + 1)}
       />
     )
