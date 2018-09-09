@@ -7,20 +7,22 @@ const RenderImageArrow = ({ direction, target, onClick, hasImage }) => {
     direction === 'left' ? <span>&larr;</span> : <span>&rarr;</span>
   const content = (
     <React.Fragment>
-      <div className="image-arrow__extra">
-        Go to{' '}
-        <b>
-          {(!hasImage && target.frontmatter.title) ||
-            (direction === 'left' ? 'previous image' : 'next image')}
-        </b>
-      </div>
+      {!hasImage && (
+        <div className="image-arrow__extra">
+          Go to{' '}
+          <b>
+            {(!hasImage && target.frontmatter.title) ||
+              (direction === 'left' ? 'previous image' : 'next image')}
+          </b>
+        </div>
+      )}
       <h1>{dArrow}</h1>
     </React.Fragment>
   )
   if (hasImage) {
     return (
       <div
-        className={`image-arrow image-arrow--${direction}`}
+        className={`image-arrow image-arrow--${direction} image-arrow--no-extra`}
         onClick={onClick}
       >
         {content}
