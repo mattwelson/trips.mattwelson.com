@@ -1,5 +1,5 @@
 $black: #1d1d1d;
-$accent: #fab1a0;
+$accent: #5f6d77;
 
 body {
   background: $black;
@@ -316,7 +316,7 @@ footer {
       left: 0;
       background: $accent;
       z-index: 5;
-      animation: reveallerRight 0.8s 0.7s forwards;
+      animation: reveallerRight 0.8s 0.5s forwards;
     }
 
     &:after {
@@ -403,20 +403,20 @@ footer {
     opacity: 0.9;
   }
 
-  .trip__image img {
-    transition: 1s;
-    transform: translateX(-100%);
+  .trip__image .gatsby-image-outer-wrapper {
+    transition: 0.4s;
+    transform: translateX(-10%);
     opacity: 0.5;
   }
 
-  .image--selected img {
+  .image--selected .gatsby-image-outer-wrapper {
     transform: translateX(0);
     opacity: 1;
     z-index: 1;
   }
 
-  .image--selected ~ .trip__image img {
-    transform: translateX(100%);
+  .image--selected ~ .trip__image .gatsby-image-outer-wrapper {
+    transform: translateX(10%);
     opacity: 0.5;
   }
 
