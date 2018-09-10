@@ -51,6 +51,14 @@ body {
   grid-template-rows: 1fr auto;
 }
 
+.trip__description {
+  max-width: 500px;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+
 .more {
   background: rgba(0, 0, 0, 0.8);
   color: white;
@@ -83,6 +91,12 @@ body {
 
 .trip__image {
   margin-bottom: 2em;
+  max-width: 800px;
+  width: 100%;
+  margin: {
+    left: auto;
+    right: auto;
+  }
 }
 
 .menu {
@@ -227,7 +241,7 @@ footer {
   }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 1000px) {
   body {
     padding: 0 3em;
   }
@@ -235,11 +249,11 @@ footer {
   .trip__images--mobile {
     display: none;
   }
-  
+
   .app {
     background: none;
   }
-  
+
   .trip {
     background: white;
   }
@@ -300,6 +314,7 @@ footer {
   .trip__image {
     justify-content: start;
     grid-column: 1 / -1;
+    max-width: unset;
   }
 
   .more {
