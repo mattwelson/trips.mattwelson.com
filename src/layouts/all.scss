@@ -274,7 +274,7 @@ footer {
     position: absolute;
     top: 1em;
     right: 1em;
-    filter: invert(1);
+    color: white;
     transition: 0.2s linear all;
     transform: scale(1) rotate(0);
     padding: 0;
@@ -328,7 +328,7 @@ footer {
   .trip__images--desktop .trip__image {
     grid-row: 1;
     grid-column: 1 / -1;
-    min-height: 80vh;
+    min-height: 70vh;
     display: grid;
     align-items: stretch;
     justify-content: stretch;
