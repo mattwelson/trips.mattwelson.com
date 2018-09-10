@@ -428,6 +428,7 @@ footer {
     align-self: end;
     transform: translateY(2em);
     overflow: hidden;
+    padding-top: 2em;
   }
 
   .trip__image-dots {
@@ -542,7 +543,7 @@ footer {
 
   .image-arrow__wrapper:hover .image-arrow {
     opacity: 0.9;
-    transform: translateX(0) scale(1.1);
+    transform: translateX(0);
 
     .image-arrow__extra {
       opacity: 1;
