@@ -40,7 +40,7 @@ class DesktopPhotos extends React.Component {
         {arrowRight}
         {images.length > 1 && (
           <div className="trip__image-dots-box">
-            <div className="trip__image-dots fade delay2">
+            <div className="trip__image-dots">
               <div className="image-dots__arrow">&larr;</div>
               {images.map((img, i) => (
                 <div
@@ -55,7 +55,7 @@ class DesktopPhotos extends React.Component {
         )}
         {images.map(({ node }, i) => (
           <div
-            className={`trip__image reveal delay-half ${
+            className={`trip__image ${
               i === imageIndex ? 'image--selected' : ''
             }`}
             key={i}

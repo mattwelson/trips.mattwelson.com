@@ -28,13 +28,8 @@ body {
   align-self: start;
   cursor: pointer;
   opacity: 0.8;
-  transition: 0.2s linear all;
   padding: 1em;
   margin: 0;
-
-  &:hover {
-    opacity: 1;
-  }
 }
 
 .buttons {
@@ -112,7 +107,6 @@ body {
   justify-items: center;
   transform: translateY(-100%);
   opacity: 0.3;
-  transition: 0.5s ease-in-out all;
   z-index: 10;
   padding: 1em;
   padding-top: 4em;
@@ -124,7 +118,6 @@ body {
   text-decoration: none;
   opacity: 0.8;
   transform: scale(1);
-  transition: 0.3s all linear;
   font-size: 0.7em;
 
   &.menu__item--active {
@@ -164,17 +157,10 @@ footer {
 .arrow__link {
   display: block;
   opacity: 0.7;
-  transition: 0.3s;
-  transform: scale(1) translateY(0);
-
-  &:hover {
-    opacity: 0.9;
-    transform: scale(1.04) translateY(-2px);
-  }
 }
 
 .arrow--left {
-  transform: scale(1) translateY(0) rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .arrow--disabled {
@@ -188,15 +174,12 @@ footer {
 .arrow__helper {
   display: none;
   opacity: 0;
-  transform: translateY(-50%);
-  transition: 0.3s;
   grid-column: 1/ -1;
   grid-row: 2;
 }
 
 .arrow:hover + .arrow__helper {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .error-page {
@@ -216,17 +199,6 @@ footer {
   img[src^='data:image/jpeg;base64'] {
     filter: blur(1em);
     transform: scale(1.1);
-  }
-}
-
-.preload * {
-  &,
-  &:before,
-  &:after {
-    animation-delay: 0s !important;
-    animation-duration: 0s !important;
-    transition: background-color 0s, opacity 0s, color 0s, width 0s, height 0s,
-      padding 0s, margin 0s !important;
   }
 }
 
@@ -275,13 +247,7 @@ footer {
     top: 1em;
     right: 1em;
     color: white;
-    transition: 0.2s linear all;
-    transform: scale(1) rotate(0);
     padding: 0;
-
-    &:hover {
-      transform: scale(1.05) rotate(3deg);
-    }
   }
 
   .menu h1 {
@@ -340,87 +306,6 @@ footer {
     }
   }
 
-  @keyframes reveallerRight {
-    0% {
-      transform: translateX(0);
-    }
-
-    100% {
-      transform: translateX(110%);
-    }
-  }
-
-  @keyframes fadeDown {
-    0% {
-      transform: translateY(-1em);
-      opacity: 0;
-    }
-
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
-  .reveal {
-    position: relative;
-    overflow-x: hidden;
-
-    &:before {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background: $accent;
-      z-index: 5;
-      animation: reveallerRight 0.8s 0.5s forwards;
-    }
-
-    &:after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background: white;
-      z-index: 10;
-      animation: reveallerRight 0.8s forwards;
-    }
-  }
-
-  .fade {
-    opacity: 0;
-    animation: fadeDown 0.5s forwards;
-  }
-
-  .delay-half {
-    animation-delay: 0.2s;
-
-    &:after {
-      animation-delay: 0.2s;
-    }
-  }
-
-  .delay {
-    animation-delay: 0.4s;
-
-    &:after {
-      animation-delay: 0.4s;
-    }
-  }
-  .delay2 {
-    animation-delay: 0.6s;
-
-    &:after {
-      animation-delay: 0.6s;
-    }
-  }
-
   .trip__image-dots-box {
     grid-row: 1;
     grid-column: 1 / -1;
@@ -450,35 +335,11 @@ footer {
     border-radius: 50%;
     background: white;
     opacity: 0.5;
-    transition: 0.2s;
-    transform: scale(1);
     cursor: pointer;
-
-    &:hover {
-      opacity: 1;
-      transform: scale(1.1);
-    }
   }
 
   .dot--selected {
     opacity: 0.9;
-  }
-
-  .trip__image .gatsby-image-outer-wrapper {
-    transition: 0.4s;
-    transform: translateX(-10%);
-    opacity: 0.5;
-  }
-
-  .image--selected .gatsby-image-outer-wrapper {
-    transform: translateX(0);
-    opacity: 1;
-    z-index: 1;
-  }
-
-  .image--selected ~ .trip__image .gatsby-image-outer-wrapper {
-    transform: translateX(10%);
-    opacity: 0.5;
   }
 
   .image-arrow__wrapper {
@@ -501,16 +362,9 @@ footer {
     align-items: center;
     grid-gap: 1em;
     grid-auto-flow: dense;
-    transition: 0.5s;
-    transform: translateX(-100%);
-    opacity: 0.5;
 
     h1 {
       margin-bottom: 0.4rem;
-    }
-
-    &.image-arrow--right {
-      transform: translateX(100%);
     }
   }
 
@@ -527,27 +381,7 @@ footer {
   }
 
   .image-arrow__extra {
-    opacity: 0;
-    transition: 0.5s;
-  }
-
-  .trip__images:hover {
-    .image-arrow {
-      opacity: 0.7;
-      transform: translateX(calc(-100% + 110px)) scale(1);
-    }
-    .image-arrow--right {
-      transform: translateX(calc(100% - 110px)) scale(1);
-    }
-  }
-
-  .image-arrow__wrapper:hover .image-arrow {
-    opacity: 0.9;
-    transform: translateX(0);
-
-    .image-arrow__extra {
-      opacity: 1;
-    }
+    opacity: 1;
   }
 
   .gatsby-image-wrapper {
@@ -556,10 +390,5 @@ footer {
 
   .menu h1 a {
     font-size: 1em;
-  }
-
-  .menu h1 a:hover {
-    transform: scale(1.05);
-    opacity: 1;
   }
 }

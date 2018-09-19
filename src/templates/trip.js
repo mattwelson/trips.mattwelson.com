@@ -33,7 +33,7 @@ export const TripTemplate = ({
       {others && <Menu trips={others} activeSlug={activeSlug} />}
       <section className="trip">
         <div className="details">
-          <div className="fade">
+          <div className="">
             <h4 className="trip__subtitle">
               {date}
               {subtitle ? ` - ${subtitle}` : ''}
