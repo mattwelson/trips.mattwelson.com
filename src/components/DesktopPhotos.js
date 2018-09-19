@@ -1,7 +1,21 @@
 import React from 'react'
 import Img from 'gatsby-image'
+import posed from 'react-pose'
 
 import ImageArrow from './ImageArrow'
+
+const Hoverable = posed.div({
+  hoverable: true
+})
+
+const SelectedImage = posed.div({
+  visible: {
+    opacity: 1
+  },
+  hidden: {
+    opacity: 0
+  }
+})
 
 class DesktopPhotos extends React.Component {
   state = {
@@ -35,7 +49,7 @@ class DesktopPhotos extends React.Component {
     )
 
     return (
-      <div className="trip__images trip__images--desktop">
+      <Hoverable className="trip__images trip__images--desktop">
         {arrowLeft}
         {arrowRight}
         {images.length > 1 && (
@@ -54,16 +68,15 @@ class DesktopPhotos extends React.Component {
           </div>
         )}
         {images.map(({ node }, i) => (
-          <div
-            className={`trip__image ${
-              i === imageIndex ? 'image--selected' : ''
-            }`}
+          <SelectedImage
+            className="trip__image"
+            pose={i === imageIndex ? 'visible' : 'hidden'}
             key={i}
           >
             <Img sizes={node.sizes} key={i} />
-          </div>
+          </SelectedImage>
         ))}
-      </div>
+      </Hoverable>
     )
   }
 }

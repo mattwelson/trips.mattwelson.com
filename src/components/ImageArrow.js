@@ -1,5 +1,15 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import posed from 'react-pose'
+
+const ArrowAnimation = posed.div({
+  init: {
+    x: ({ direction }) => (direction === 'left' ? '-100%' : '100%')
+  },
+  hover: {
+    x: 0
+  }
+})
 
 // supply link or onClick event
 const RenderImageArrow = ({ direction, target, onClick, hasImage }) => {
@@ -21,21 +31,24 @@ const RenderImageArrow = ({ direction, target, onClick, hasImage }) => {
   )
   if (hasImage) {
     return (
-      <div
+      <ArrowAnimation
         className={`image-arrow image-arrow--${direction} image-arrow--no-extra`}
         onClick={onClick}
+        direction={direction}
       >
         {content}
-      </div>
+      </ArrowAnimation>
     )
   }
   return (
-    <Link
-      to={target.fields.slug}
-      className={`image-arrow image-arrow--${direction}`}
-    >
-      {content}
-    </Link>
+    <ArrowAnimation direction={direction}>
+      <Link
+        to={target.fields.slug}
+        className={`image-arrow image-arrow--${direction}`}
+      >
+        {content}
+      </Link>
+    </ArrowAnimation>
   )
 }
 
