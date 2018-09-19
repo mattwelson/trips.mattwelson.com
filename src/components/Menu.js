@@ -1,16 +1,18 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import posed from 'react-pose'
+import { relative } from 'path'
 
 const MenuLink = posed.div({
   hoverable: true,
   init: {
     scale: 1,
     rotate: 0,
-    opacity: 0.7
+    opacity: 0.7,
+    position: 'relative'
   },
   hover: {
-    scale: 1.2,
+    scale: 1.1,
     rotate: '1deg',
     opacity: 1
   }
@@ -78,7 +80,7 @@ class Menu extends React.Component {
           <div className="menu__list">
             <div onClick={e => e.stopPropagation()}>
               {trips.map(({ node: trip }) => (
-                <MenuHeadings key={trip.fields.slug}>
+                <MenuHeadings key={trip.fields.slug} className="menu__header">
                   <Link
                     to={trip.fields.slug}
                     className={
