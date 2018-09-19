@@ -23,6 +23,11 @@ body {
   display: grid;
 }
 
+.menu__wrapper {
+  display: grid;
+  justify-items: end;
+}
+
 .menu-toggle {
   text-align: right;
   align-self: start;
@@ -124,11 +129,6 @@ body {
     text-decoration: underline;
     color: lighten($accent, 10%);
   }
-}
-
-.menu--open {
-  transform: translateY(0);
-  opacity: 0.98;
 }
 
 footer {
@@ -245,7 +245,7 @@ footer {
   .menu-toggle {
     position: absolute;
     top: 1em;
-    right: 1em;
+    right: 0;
     color: white;
     padding: 0;
   }
