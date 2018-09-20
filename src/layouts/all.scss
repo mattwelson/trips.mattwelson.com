@@ -354,6 +354,10 @@ footer {
     overflow: hidden;
   }
 
+  .image-arrow__wrapper-inner {
+    transform: translateX(-100%);
+  }
+
   .image-arrow {
     cursor: pointer;
     color: white;
@@ -379,8 +383,12 @@ footer {
   .image-arrow__wrapper--right {
     grid-column: span 1 / -1;
 
-    & .image-arrow__extra {
+    .image-arrow__extra {
       grid-column: 2;
+    }
+
+    .image-arrow__wrapper-inner {
+      transform: translateX(100%);
     }
   }
 
