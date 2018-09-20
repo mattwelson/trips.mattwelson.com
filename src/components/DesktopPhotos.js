@@ -3,6 +3,7 @@ import Img from 'gatsby-image'
 import posed from 'react-pose'
 
 import ImageArrow from './ImageArrow'
+import ImageDots from './ImageDots'
 
 const Hoverable = posed.div({
   hoverable: true
@@ -52,21 +53,11 @@ class DesktopPhotos extends React.Component {
       <Hoverable className="trip__images trip__images--desktop">
         {arrowLeft}
         {arrowRight}
-        {images.length > 1 && (
-          <div className="trip__image-dots-box">
-            <div className="trip__image-dots">
-              <div className="image-dots__arrow">&larr;</div>
-              {images.map((img, i) => (
-                <div
-                  className={`dot ${i === imageIndex ? 'dot--selected' : ''}`}
-                  key={i}
-                  onClick={() => this.select(i)}
-                />
-              ))}
-              <div className="image-dots__arrow">&rarr;</div>
-            </div>
-          </div>
-        )}
+        <ImageDots
+          length={images.length}
+          select={this.select}
+          selectedIndex={imageIndex}
+        />
         {images.map(({ node }, i) => (
           <SelectedImage
             className="trip__image"

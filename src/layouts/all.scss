@@ -321,10 +321,8 @@ footer {
   }
 
   .trip__image-dots {
-    display: grid;
-    grid-gap: 1em;
-    grid-auto-flow: column;
-    align-items: baseline;
+    display: flex;
+    align-items: center;
     justify-content: center;
     color: white;
   }
@@ -339,11 +337,8 @@ footer {
     border-radius: 50%;
     background: white;
     opacity: 0.5;
+    margin: 0.5em;
     cursor: pointer;
-  }
-
-  .dot--selected {
-    opacity: 0.9;
   }
 
   .image-arrow__wrapper {
@@ -388,26 +383,6 @@ footer {
       }
     }
   }
-
-  // .image-arrow--no-extra {
-  //   grid-template-columns: auto;
-  // }
-
-  // .image-arrow__wrapper--right {
-  //   grid-column: span 1 / -1;
-
-  //   .image-arrow__extra {
-  //     grid-column: 2;
-  //   }
-
-  //   .image-arrow__wrapper-inner {
-  //     transform: translateX(100%);
-  //   }
-  // }
-
-  // .image-arrow__extra {
-  //   opacity: 1;
-  // }
 
   .gatsby-image-wrapper {
     height: 100%;
