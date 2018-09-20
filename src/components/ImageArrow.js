@@ -2,13 +2,24 @@ import React from 'react'
 import Link from 'gatsby-link'
 import posed from 'react-pose'
 
-const GrowAndFade = posed.div({
+const Grow = posed.div({
   init: {
-    width: 0,
-    opacity: ({ from = 1 }) => from
+    width: 0
   },
   hover: {
     width: 'auto',
+    beforeChildren: true
+  },
+  hoverEnd: {
+    width: 0,
+    afterChildren: true
+  }
+})
+const Fade = posed.div({
+  init: {
+    opacity: ({ from = 0 }) => from
+  },
+  hover: {
     opacity: ({ to = 1 }) => to
   }
 })
@@ -42,11 +53,13 @@ const RenderImageArrow = ({ direction, target, onClick, hasImage }) => {
       to={target.fields.slug}
       className={`image-arrow image-arrow--${direction}`}
     >
-      <GrowAndFade from={0}>
-        <div className="image-arrow__extra">
-          Go to <b>{!hasImage && target.frontmatter.title}</b>
-        </div>
-      </GrowAndFade>
+      <Grow>
+        <Fade>
+          <div className="image-arrow__extra">
+            Go to <b>{!hasImage && target.frontmatter.title}</b>
+          </div>
+        </Fade>
+      </Grow>
       <h1>{dArrow}</h1>
     </Link>
   )
@@ -56,11 +69,11 @@ const ImageArrow = props => (
   <div
     className={`image-arrow__wrapper image-arrow__wrapper--${props.direction}`}
   >
-    <GrowAndFade>
+    <Grow>
       <Hoverable withParent={false}>
         <RenderImageArrow {...props} />
       </Hoverable>
-    </GrowAndFade>
+    </Grow>
   </div>
 )
 
