@@ -13,7 +13,13 @@ const GrowAndFade = posed.div({
   }
 })
 const Hoverable = posed.div({
-  hoverable: true
+  hoverable: true,
+  init: {
+    opacity: 0.7
+  },
+  hover: {
+    opacity: 0.9
+  }
 })
 
 // supply link or onClick event

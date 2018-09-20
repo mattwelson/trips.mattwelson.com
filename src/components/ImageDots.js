@@ -46,7 +46,7 @@ const ImageDots = ({ length, select, selectedIndex }) => {
               &larr;
             </Child>
             {new Array(length).fill().map((_, i) => (
-              <Hoverable>
+              <Hoverable key={i}>
                 <Child
                   className={`dot ${
                     i === selectedIndex ? 'dot--selected' : ''
