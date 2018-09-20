@@ -9,10 +9,6 @@ const Grow = posed.div({
   hover: {
     width: 'auto',
     beforeChildren: true
-  },
-  hoverEnd: {
-    width: 0,
-    afterChildren: true
   }
 })
 const Fade = posed.div({
