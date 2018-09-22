@@ -220,6 +220,10 @@ footer {
   opacity: 0;
 }
 
+.relative {
+  position: relative;
+}
+
 @media (min-width: 600px) {
   .trip {
     text-align: center;
