@@ -7,28 +7,35 @@ const Grow = posed.div({
     width: 0
   },
   hover: {
-    width: 'auto',
-    beforeChildren: true,
-    staggerChilren: 100
+    width: 'auto'
   }
 })
+
+const SlideIn = posed.div({
+  init: {
+    x: ({ direction }) => (direction === 'left' ? -117 : 117)
+  },
+  hover: {
+    x: 0
+  }
+})
+
 const Fade = posed.div({
   init: {
     opacity: ({ from = 0 }) => from
   },
   hover: {
-    opacity: ({ to = 1 }) => to,
-    staggerChilren: 100
+    opacity: ({ to = 1 }) => to
   }
 })
+
 const Hoverable = posed.div({
   hoverable: true,
   init: {
     opacity: 0.7
   },
   hover: {
-    opacity: 0.9,
-    staggerChilren: 100
+    opacity: 0.9
   }
 })
 
@@ -68,11 +75,11 @@ const ImageArrow = props => (
   <div
     className={`image-arrow__wrapper image-arrow__wrapper--${props.direction}`}
   >
-    <Grow>
+    <SlideIn direction={props.direction}>
       <Hoverable withParent={false}>
         <RenderImageArrow {...props} />
       </Hoverable>
-    </Grow>
+    </SlideIn>
   </div>
 )
 
