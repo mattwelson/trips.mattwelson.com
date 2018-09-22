@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import posed from 'react-pose'
-import { relative } from 'path'
 
 const MenuLink = posed.div({
   hoverable: true,

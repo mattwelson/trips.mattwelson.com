@@ -6,7 +6,7 @@ import posed, { PoseGroup } from 'react-pose'
 
 import DirectionArrow from '../components/DirectionArrow'
 import Menu from '../components/Menu'
-import Content, { HTMLContent } from '../components/Content'
+import Content from '../components/Content'
 import DesktopPhotos from '../components/DesktopPhotos'
 
 const StaggerChildren = posed.div({
@@ -88,7 +88,7 @@ export const TripTemplate = ({
                 {images &&
                   images.map((image, i) => (
                     <div className="trip__image" key={i}>
-                      <img key={image} src={image} />
+                      <img key={image} src={image} alt="" />
                     </div>
                   ))}
               </div>

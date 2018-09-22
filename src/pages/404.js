@@ -11,7 +11,7 @@ const NotFoundPage = () => (
         something embarrassingly broken please let me know!
       </p>
       <p>
-        <a href={settings.twitter} target="_blank">
+        <a href={settings.twitter} target="_blank" rel="noopener noreferrer">
           @mattwelson
         </a>
       </p>
