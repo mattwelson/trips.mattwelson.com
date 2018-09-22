@@ -7,8 +7,7 @@ const MenuLink = posed.div({
   init: {
     scale: 1,
     rotate: 0,
-    opacity: 0.7,
-    position: 'relative'
+    opacity: 0.7
   },
   hover: {
     scale: 1.1,
@@ -66,7 +65,7 @@ class Menu extends React.Component {
     const { trips, activeSlug } = this.props
     return (
       <div className="menu__wrapper">
-        <MenuLink>
+        <MenuLink className="relative">
           <h6 className="menu-toggle" onClick={this.toggleMenu}>
             TRIPS
           </h6>
