@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import Img from 'gatsby-image'
-import posed, { PoseGroup } from 'react-pose'
+import posed from 'react-pose'
 
 import DirectionArrow from '../components/DirectionArrow'
 import Menu from '../components/Menu'
@@ -47,55 +47,53 @@ export const TripTemplate = ({
     <div className="app">
       {helmet || ''}
       {others && <Menu trips={others} activeSlug={activeSlug} />}
-      <PoseGroup>
-        <StaggerChildren key="trip">
-          <section className="trip">
-            <div className="details">
-              <div className="">
-                <FadeDown>
-                  <h4 className="trip__subtitle">
-                    {date}
-                    {subtitle ? ` - ${subtitle}` : ''}
-                  </h4>
-                </FadeDown>
-                <FadeDown>
-                  <h1>{title}</h1>
-                </FadeDown>
-                <FadeDown>{description}</FadeDown>
-                <FadeDown className="trip__description">
-                  <PostContent content={content} />
-                </FadeDown>
-              </div>
-              <FadeDown className="buttons">
-                <DirectionArrow target={previous} direction="left" />
-                <DirectionArrow target={next} />
+      <StaggerChildren key="trip">
+        <section className="trip">
+          <div className="details">
+            <div className="">
+              <FadeDown>
+                <h4 className="trip__subtitle">
+                  {date}
+                  {subtitle ? ` - ${subtitle}` : ''}
+                </h4>
+              </FadeDown>
+              <FadeDown>
+                <h1>{title}</h1>
+              </FadeDown>
+              <FadeDown>{description}</FadeDown>
+              <FadeDown className="trip__description">
+                <PostContent content={content} />
               </FadeDown>
             </div>
-            {!cms && (
-              <DesktopPhotos images={images} next={next} previous={previous} />
-            )}
-            {!cms && (
-              <div className="trip__images trip__images--mobile">
-                {images.map(({ node }, i) => (
+            <FadeDown className="buttons">
+              <DirectionArrow target={previous} direction="left" />
+              <DirectionArrow target={next} />
+            </FadeDown>
+          </div>
+          {!cms && (
+            <DesktopPhotos images={images} next={next} previous={previous} />
+          )}
+          {!cms && (
+            <div className="trip__images trip__images--mobile">
+              {images.map(({ node }, i) => (
+                <div className="trip__image" key={i}>
+                  <Img key={node.originalName} sizes={node.sizes} />
+                </div>
+              ))}
+            </div>
+          )}
+          {cms && (
+            <div className="trip__images trip__images--cms">
+              {images &&
+                images.map((image, i) => (
                   <div className="trip__image" key={i}>
-                    <Img key={node.originalName} sizes={node.sizes} />
+                    <img key={image} src={image} alt="" />
                   </div>
                 ))}
-              </div>
-            )}
-            {cms && (
-              <div className="trip__images trip__images--cms">
-                {images &&
-                  images.map((image, i) => (
-                    <div className="trip__image" key={i}>
-                      <img key={image} src={image} alt="" />
-                    </div>
-                  ))}
-              </div>
-            )}
-          </section>
-        </StaggerChildren>
-      </PoseGroup>
+            </div>
+          )}
+        </section>
+      </StaggerChildren>
     </div>
   )
 }
