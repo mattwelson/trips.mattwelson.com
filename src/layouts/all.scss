@@ -149,6 +149,7 @@ footer {
 .buttons {
   display: grid;
   margin-bottom: 1em;
+  justify-content: center;
 }
 
 .arrow {
@@ -218,10 +219,6 @@ footer {
   .trip {
     text-align: center;
     margin: 1em;
-  }
-
-  .buttons {
-    justify-content: center;
   }
 }
 
