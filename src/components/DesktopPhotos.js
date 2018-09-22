@@ -1,7 +1,47 @@
 import React from 'react'
 import Img from 'gatsby-image'
+import posed, { PoseGroup } from 'react-pose'
+import { navigateTo } from 'gatsby-link'
 
 import ImageArrow from './ImageArrow'
+import ImageDots from './ImageDots'
+
+const Hoverable = posed.div({
+  hoverable: true
+})
+
+const SelectedImage = posed.div({
+  visible: {
+    opacity: 1
+  },
+  hidden: {
+    opacity: 0
+  }
+})
+
+const Reveal = posed.div({
+  exit: {
+    position: 'relative',
+    left: 0,
+    background: ({ background }) => background || 'white',
+    flip: true
+  },
+  enter: {
+    left: '100%',
+    flip: true,
+    transition: {
+      ease: 'easeOut'
+    }
+  }
+})
+
+const StaggerChildren = posed.div({
+  enter: {
+    staggerChildren: 500,
+    staggerDirection: -1,
+    delayChildren: 400
+  }
+})
 
 class DesktopPhotos extends React.Component {
   state = {
@@ -9,6 +49,35 @@ class DesktopPhotos extends React.Component {
   }
 
   select = imageIndex => this.setState(() => ({ imageIndex }))
+
+  handleKeyDown = e => {
+    const key = e.key
+    const { imageIndex } = this.state
+    const imageCount = this.props.images.length
+    const { next, previous } = this.props
+    if (key === 'ArrowLeft') {
+      if (imageIndex === 0) {
+        if (previous) return navigateTo(previous.fields.slug)
+        return
+      }
+      this.select(imageIndex - 1)
+    }
+    if (key === 'ArrowRight') {
+      if (imageIndex + 1 === imageCount) {
+        if (next) return navigateTo(next.fields.slug)
+        return
+      }
+      this.select(imageIndex + 1)
+    }
+  }
+
+  componentDidMount = () => {
+    document.addEventListener('keydown', this.handleKeyDown)
+  }
+
+  componentWillUnmount = () => {
+    document.removeEventListener('keydown', this.handleKeyDown)
+  }
 
   render() {
     const { images, next, previous } = this.props
@@ -35,35 +104,32 @@ class DesktopPhotos extends React.Component {
     )
 
     return (
-      <div className="trip__images trip__images--desktop">
+      <Hoverable className="trip__images trip__images--desktop" key="child">
         {arrowLeft}
         {arrowRight}
-        {images.length > 1 && (
-          <div className="trip__image-dots-box">
-            <div className="trip__image-dots fade delay2">
-              <div className="image-dots__arrow">&larr;</div>
-              {images.map((img, i) => (
-                <div
-                  className={`dot ${i === imageIndex ? 'dot--selected' : ''}`}
-                  key={i}
-                  onClick={() => this.select(i)}
-                />
-              ))}
-              <div className="image-dots__arrow">&rarr;</div>
-            </div>
-          </div>
-        )}
+        <ImageDots
+          length={images.length}
+          select={this.select}
+          selectedIndex={imageIndex}
+        />
         {images.map(({ node }, i) => (
-          <div
-            className={`trip__image reveal delay-half ${
-              i === imageIndex ? 'image--selected' : ''
-            }`}
+          <SelectedImage
+            className="trip__image"
+            pose={i === imageIndex ? 'visible' : 'hidden'}
             key={i}
           >
             <Img sizes={node.sizes} key={i} />
-          </div>
+          </SelectedImage>
         ))}
-      </div>
+        <StaggerChildren className="trip__reveal-wrap">
+          <Reveal
+            className="trip__reveal"
+            background="#5f6d77"
+            key="reveal-color"
+          />
+          <Reveal className="trip__reveal" key="reveal-white" />
+        </StaggerChildren>
+      </Hoverable>
     )
   }
 }

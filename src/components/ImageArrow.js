@@ -1,31 +1,56 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import posed from 'react-pose'
+
+const Grow = posed.div({
+  init: {
+    width: 0
+  },
+  hover: {
+    width: 'auto'
+  }
+})
+
+const SlideIn = posed.div({
+  init: {
+    x: ({ direction }) => (direction === 'left' ? -117 : 117)
+  },
+  hover: {
+    x: 0
+  }
+})
+
+const Fade = posed.div({
+  init: {
+    opacity: ({ from = 0 }) => from
+  },
+  hover: {
+    opacity: ({ to = 1 }) => to
+  }
+})
+
+const Hoverable = posed.div({
+  hoverable: true,
+  init: {
+    opacity: 0.7
+  },
+  hover: {
+    opacity: 0.9
+  }
+})
 
 // supply link or onClick event
 const RenderImageArrow = ({ direction, target, onClick, hasImage }) => {
   const dArrow =
     direction === 'left' ? <span>&larr;</span> : <span>&rarr;</span>
-  const content = (
-    <React.Fragment>
-      {!hasImage && (
-        <div className="image-arrow__extra">
-          Go to{' '}
-          <b>
-            {(!hasImage && target.frontmatter.title) ||
-              (direction === 'left' ? 'previous image' : 'next image')}
-          </b>
-        </div>
-      )}
-      <h1>{dArrow}</h1>
-    </React.Fragment>
-  )
   if (hasImage) {
     return (
       <div
         className={`image-arrow image-arrow--${direction} image-arrow--no-extra`}
         onClick={onClick}
+        direction={direction}
       >
-        {content}
+        <h1>{dArrow}</h1>
       </div>
     )
   }
@@ -34,7 +59,14 @@ const RenderImageArrow = ({ direction, target, onClick, hasImage }) => {
       to={target.fields.slug}
       className={`image-arrow image-arrow--${direction}`}
     >
-      {content}
+      <Grow>
+        <Fade>
+          <div className="image-arrow__extra">
+            Go to <b>{!hasImage && target.frontmatter.title}</b>
+          </div>
+        </Fade>
+      </Grow>
+      <h1>{dArrow}</h1>
     </Link>
   )
 }
@@ -43,7 +75,11 @@ const ImageArrow = props => (
   <div
     className={`image-arrow__wrapper image-arrow__wrapper--${props.direction}`}
   >
-    <RenderImageArrow {...props} />
+    <SlideIn direction={props.direction}>
+      <Hoverable withParent={false}>
+        <RenderImageArrow {...props} />
+      </Hoverable>
+    </SlideIn>
   </div>
 )
 
