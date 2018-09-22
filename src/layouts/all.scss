@@ -7,7 +7,7 @@ body {
 }
 
 .trip__subtitle {
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 .app {
@@ -35,14 +35,6 @@ body {
   opacity: 0.8;
   padding: 1em;
   margin: 0;
-}
-
-.buttons {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-gap: 1em;
-  justify-content: start;
-  margin-bottom: 1em;
 }
 
 .trip__images {
@@ -154,6 +146,11 @@ footer {
   }
 }
 
+.buttons {
+  display: grid;
+  margin-bottom: 1em;
+}
+
 .arrow {
   margin-bottom: 0;
 }
@@ -175,9 +172,20 @@ footer {
   display: none;
 }
 
+.arrow__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1em;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+}
+
+.arrow__wrapper--right .arrow {
+  grid-column: 2;
+}
+
 .arrow__helper {
   display: none;
-  opacity: 0;
   grid-column: 1/ -1;
   grid-row: 2;
 }
@@ -240,6 +248,10 @@ footer {
       1px
     ); // removes a slither of white on the right of the image
     grid-template-columns: auto 1fr auto;
+  }
+
+  .arrow__wrapper {
+    grid-template-columns: 60px 1fr;
   }
 
   .arrow__helper {
@@ -338,7 +350,15 @@ footer {
     background: white;
     opacity: 0.5;
     margin: 0.5em;
+    transition: opacity 0.3;
     cursor: pointer;
+  }
+
+  .dot:hover {
+    opacity: 1;
+  }
+  .dot--selected {
+    opacity: 0.9;
   }
 
   .image-arrow__wrapper {

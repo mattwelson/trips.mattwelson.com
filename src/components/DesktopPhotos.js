@@ -104,34 +104,32 @@ class DesktopPhotos extends React.Component {
     )
 
     return (
-      <PoseGroup animateOnMount={true}>
-        <Hoverable className="trip__images trip__images--desktop" key="child">
-          {arrowLeft}
-          {arrowRight}
-          <ImageDots
-            length={images.length}
-            select={this.select}
-            selectedIndex={imageIndex}
+      <Hoverable className="trip__images trip__images--desktop" key="child">
+        {arrowLeft}
+        {arrowRight}
+        <ImageDots
+          length={images.length}
+          select={this.select}
+          selectedIndex={imageIndex}
+        />
+        {images.map(({ node }, i) => (
+          <SelectedImage
+            className="trip__image"
+            pose={i === imageIndex ? 'visible' : 'hidden'}
+            key={i}
+          >
+            <Img sizes={node.sizes} key={i} />
+          </SelectedImage>
+        ))}
+        <StaggerChildren className="trip__reveal-wrap">
+          <Reveal
+            className="trip__reveal"
+            background="#5f6d77"
+            key="reveal-color"
           />
-          {images.map(({ node }, i) => (
-            <SelectedImage
-              className="trip__image"
-              pose={i === imageIndex ? 'visible' : 'hidden'}
-              key={i}
-            >
-              <Img sizes={node.sizes} key={i} />
-            </SelectedImage>
-          ))}
-          <StaggerChildren className="trip__reveal-wrap">
-            <Reveal
-              className="trip__reveal"
-              background="#5f6d77"
-              key="reveal-color"
-            />
-            <Reveal className="trip__reveal" key="reveal-white" />
-          </StaggerChildren>
-        </Hoverable>
-      </PoseGroup>
+          <Reveal className="trip__reveal" key="reveal-white" />
+        </StaggerChildren>
+      </Hoverable>
     )
   }
 }

@@ -16,19 +16,13 @@ const Child = posed.div({
     scale: 1
   },
   exit: {
-    y: -50,
-    opacity: 0
+    y: -50
   },
   enter: {
-    y: 0,
-    opacity: ({ light }) => (light ? 0.3 : 0.6)
-  },
-  selected: {
-    opacity: 0.9
+    y: 0
   },
   hover: {
-    scale: 1.05,
-    opacity: 1
+    scale: 1.05
   }
 })
 

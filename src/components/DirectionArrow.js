@@ -1,9 +1,39 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import arrowSvg from '../img/arrow-button.svg'
+import posed from 'react-pose'
+
+const Hoverable = posed.div({
+  hoverable: true
+})
+
+const Arrow = posed.div({
+  init: {
+    opacity: 0.9,
+    scale: 1,
+    rotate: 0
+  },
+  hover: {
+    opacity: 1,
+    scale: 1.05,
+    rotate: '5deg'
+  }
+})
+
+const HelperText = posed.div({
+  init: {
+    opacity: 0,
+    y: -10
+  },
+  hover: {
+    delay: 200,
+    opacity: 1,
+    y: 0
+  }
+})
 
 const DirectionArrow = ({ target, direction = 'right' }) => (
-  <React.Fragment>
+  <Hoverable className={`arrow__wrapper arrow__wrapper--${direction}`}>
     <div className="arrow">
       {!!target || (
         <img
@@ -13,25 +43,27 @@ const DirectionArrow = ({ target, direction = 'right' }) => (
         />
       )}
       {!!target && (
-        <Link
-          to={target.fields.slug}
-          rel={direction === 'right' ? 'next' : 'prev'}
-          className="arrow__link"
-        >
-          <img
-            src={arrowSvg}
-            alt={target.frontmatter.title}
-            className={`arrow arrow--${direction}`}
-          />
-        </Link>
+        <Arrow>
+          <Link
+            to={target.fields.slug}
+            rel={direction === 'right' ? 'next' : 'prev'}
+            className="arrow__link"
+          >
+            <img
+              src={arrowSvg}
+              alt={target.frontmatter.title}
+              className={`arrow arrow--${direction}`}
+            />
+          </Link>
+        </Arrow>
       )}
     </div>
     {target && (
-      <div className="arrow__helper">
+      <HelperText className="arrow__helper">
         Go to <b>{target.frontmatter.title}</b>
-      </div>
+      </HelperText>
     )}
-  </React.Fragment>
+  </Hoverable>
 )
 
 export default DirectionArrow

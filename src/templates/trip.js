@@ -1,14 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
 import Img from 'gatsby-image'
+import posed, { PoseGroup } from 'react-pose'
 
 import DirectionArrow from '../components/DirectionArrow'
 import Menu from '../components/Menu'
 import Content, { HTMLContent } from '../components/Content'
 import DesktopPhotos from '../components/DesktopPhotos'
+
+const StaggerChildren = posed.div({
+  enter: {
+    staggerChildren: 100
+  }
+})
+const FadeDown = posed.div({
+  exit: {
+    opacity: 0,
+    y: -10
+  },
+  enter: {
+    opacity: 1,
+    y: 0
+  }
+})
 
 export const TripTemplate = ({
   content,
@@ -31,47 +46,55 @@ export const TripTemplate = ({
     <div className="app">
       {helmet || ''}
       {others && <Menu trips={others} activeSlug={activeSlug} />}
-      <section className="trip">
-        <div className="details">
-          <div className="">
-            <h4 className="trip__subtitle">
-              {date}
-              {subtitle ? ` - ${subtitle}` : ''}
-            </h4>
-            <h1>{title}</h1>
-            <p>{description}</p>
-            <div className="trip__description">
-              <PostContent content={content} />
-            </div>
-          </div>
-          <div className="buttons">
-            <DirectionArrow target={previous} direction="left" />
-            <DirectionArrow target={next} />
-          </div>
-        </div>
-        {!cms && (
-          <DesktopPhotos images={images} next={next} previous={previous} />
-        )}
-        {!cms && (
-          <div className="trip__images trip__images--mobile">
-            {images.map(({ node }, i) => (
-              <div className="trip__image" key={i}>
-                <Img key={node.originalName} sizes={node.sizes} />
+      <PoseGroup animateOnMount={true}>
+        <StaggerChildren key="trip">
+          <section className="trip">
+            <div className="details">
+              <div className="">
+                <FadeDown>
+                  <h4 className="trip__subtitle">
+                    {date}
+                    {subtitle ? ` - ${subtitle}` : ''}
+                  </h4>
+                </FadeDown>
+                <FadeDown>
+                  <h1>{title}</h1>
+                </FadeDown>
+                <FadeDown>{description}</FadeDown>
+                <FadeDown className="trip__description">
+                  <PostContent content={content} />
+                </FadeDown>
               </div>
-            ))}
-          </div>
-        )}
-        {cms && (
-          <div className="trip__images trip__images--cms">
-            {images &&
-              images.map((image, i) => (
-                <div className="trip__image" key={i}>
-                  <img key={image} src={image} />
-                </div>
-              ))}
-          </div>
-        )}
-      </section>
+              <FadeDown className="buttons">
+                <DirectionArrow target={previous} direction="left" />
+                <DirectionArrow target={next} />
+              </FadeDown>
+            </div>
+            {!cms && (
+              <DesktopPhotos images={images} next={next} previous={previous} />
+            )}
+            {!cms && (
+              <div className="trip__images trip__images--mobile">
+                {images.map(({ node }, i) => (
+                  <div className="trip__image" key={i}>
+                    <Img key={node.originalName} sizes={node.sizes} />
+                  </div>
+                ))}
+              </div>
+            )}
+            {cms && (
+              <div className="trip__images trip__images--cms">
+                {images &&
+                  images.map((image, i) => (
+                    <div className="trip__image" key={i}>
+                      <img key={image} src={image} />
+                    </div>
+                  ))}
+              </div>
+            )}
+          </section>
+        </StaggerChildren>
+      </PoseGroup>
     </div>
   )
 }
