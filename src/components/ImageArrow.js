@@ -15,7 +15,8 @@ const Grow = posed.div({
 
 const SlideIn = posed.div({
   init: {
-    x: ({ direction }) => (direction === 'left' ? -117 : 117)
+    x: ({ direction }) => (direction === 'left' ? -117 : 117),
+    opacity: 1
   },
   hover: {
     x: 0
@@ -77,7 +78,7 @@ const ImageArrow = props => (
   <div
     className={`image-arrow__wrapper image-arrow__wrapper--${props.direction}`}
   >
-    <SlideIn direction={props.direction}>
+    <SlideIn direction={props.direction} className="hidden">
       <Hoverable withParent={false}>
         <RenderImageArrow {...props} />
       </Hoverable>

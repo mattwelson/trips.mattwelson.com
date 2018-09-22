@@ -186,9 +186,10 @@ footer {
 }
 
 .arrow__helper {
-  display: none;
   grid-column: 1/ -1;
   grid-row: 2;
+  display: none;
+  opacity: 0;
 }
 
 .arrow:hover + .arrow__helper {
@@ -213,6 +214,10 @@ footer {
     filter: blur(1em);
     transform: scale(1.1);
   }
+}
+
+.hidden {
+  opacity: 0;
 }
 
 @media (min-width: 600px) {
