@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { TripTemplate } from '../../templates/trip'
+import TripTemplate from '../../layouts/TripTemplate'
 
 const TripPreview = ({ entry, widgetFor }) => (
   <TripTemplate

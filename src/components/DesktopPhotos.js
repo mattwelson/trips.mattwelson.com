@@ -1,12 +1,12 @@
 import React from 'react'
 import Img from 'gatsby-image'
 import posed, { PoseGroup } from 'react-pose'
-import { navigateTo } from 'gatsby-link'
+import { navigate } from 'gatsby'
 
 import ImageArrow from './ImageArrow'
 import ImageDots from './ImageDots'
 
-const Hoverable = posed.div({
+const PhotoWrapper = posed.div({
   hoverable: true
 })
 
@@ -57,14 +57,14 @@ class DesktopPhotos extends React.Component {
     const { next, previous } = this.props
     if (key === 'ArrowLeft') {
       if (imageIndex === 0) {
-        if (previous) return navigateTo(previous.fields.slug)
+        if (previous) return navigate(previous.fields.slug)
         return
       }
       this.select(imageIndex - 1)
     }
     if (key === 'ArrowRight') {
       if (imageIndex + 1 === imageCount) {
-        if (next) return navigateTo(next.fields.slug)
+        if (next) return navigate(next.fields.slug)
         return
       }
       this.select(imageIndex + 1)
@@ -104,7 +104,7 @@ class DesktopPhotos extends React.Component {
     )
 
     return (
-      <Hoverable className="trip__images trip__images--desktop" key="child">
+      <PhotoWrapper className="trip__images trip__images--desktop" key="child">
         {arrowLeft}
         {arrowRight}
         <ImageDots
@@ -129,7 +129,7 @@ class DesktopPhotos extends React.Component {
           />
           <Reveal className="trip__reveal" key="reveal-white" />
         </StaggerChildren>
-      </Hoverable>
+      </PhotoWrapper>
     )
   }
 }

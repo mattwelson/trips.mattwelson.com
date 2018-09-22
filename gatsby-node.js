@@ -3,8 +3,8 @@ const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 
-exports.createPages = ({ boundActionCreators, graphql }) => {
-  const { createPage, createNodeField } = boundActionCreators
+exports.createPages = ({ actions, graphql }) => {
+  const { createPage, createNodeField } = actions
 
   return graphql(`
     {
@@ -47,9 +47,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
 // Strips the trip/ from the slug
 const cleanSlug = p => /trip(.*)/.exec(p)[1]
 
-// Creates a regex that can match images based on their id
-const imgRegex = images =>
-  `/${images.map(img => `${/img\/(.*)/.exec(img)[0]}\\sabsPath`).join('|')}/`
+const cleanImgNames = imgs => imgs.map(name => /\/img\/(.*)/.exec(name)[1])
 
 const makeTrip = (createPage, edge, overridePath) => {
   const id = edge.node.id
@@ -62,13 +60,13 @@ const makeTrip = (createPage, edge, overridePath) => {
     // additional data can be passed via context
     context: {
       id,
-      imgRegex: imgRegex(edge.node.frontmatter.images)
+      images: cleanImgNames(edge.node.frontmatter.images)
     }
   })
 }
 
-exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
-  const { createNodeField } = boundActionCreators
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions
   fmImagesToRelativeHack(node)
 
   if (node.internal.type === `MarkdownRemark`) {

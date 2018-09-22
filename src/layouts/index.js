@@ -1,20 +1,15 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
 import Footer from '../components/Footer'
 import './all.scss'
 
-const TemplateWrapper = ({ children, data }) => (
+const Layout = ({ children, data }) => (
   <div className="">
     <Helmet title="Matt Welson" />
-    <div>{children()}</div>
+    <div>{children}</div>
     <Footer />
   </div>
 )
 
-TemplateWrapper.propTypes = {
-  children: PropTypes.func
-}
-
-export default TemplateWrapper
+export default Layout
