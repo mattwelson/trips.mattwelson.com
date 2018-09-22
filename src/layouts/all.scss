@@ -385,6 +385,19 @@ footer {
     }
   }
 
+  .trip__reveal-wrap {
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+    display: grid;
+    overflow: hidden;
+    z-index: 5;
+
+    .trip__reveal {
+      grid-row: 1 / -1;
+      grid-column: 1 / -1;
+    }
+  }
+
   .gatsby-image-wrapper {
     height: 100%;
   }

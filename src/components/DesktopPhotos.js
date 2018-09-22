@@ -1,6 +1,7 @@
 import React from 'react'
 import Img from 'gatsby-image'
-import posed from 'react-pose'
+import posed, { PoseGroup } from 'react-pose'
+import { navigateTo } from 'gatsby-link'
 
 import ImageArrow from './ImageArrow'
 import ImageDots from './ImageDots'
@@ -18,12 +19,65 @@ const SelectedImage = posed.div({
   }
 })
 
+const Reveal = posed.div({
+  exit: {
+    position: 'relative',
+    left: 0,
+    background: ({ background }) => background || 'white',
+    flip: true
+  },
+  enter: {
+    left: '100%',
+    flip: true,
+    transition: {
+      ease: 'easeOut'
+    }
+  }
+})
+
+const StaggerChildren = posed.div({
+  enter: {
+    staggerChildren: 500,
+    staggerDirection: -1,
+    delayChildren: 400
+  }
+})
+
 class DesktopPhotos extends React.Component {
   state = {
     imageIndex: 0
   }
 
   select = imageIndex => this.setState(() => ({ imageIndex }))
+
+  handleKeyDown = e => {
+    const key = e.key
+    const { imageIndex } = this.state
+    const imageCount = this.props.images.length
+    const { next, previous } = this.props
+    if (key === 'ArrowLeft') {
+      if (imageIndex === 0) {
+        if (previous) return navigateTo(previous.fields.slug)
+        return
+      }
+      this.select(imageIndex - 1)
+    }
+    if (key === 'ArrowRight') {
+      if (imageIndex + 1 === imageCount) {
+        if (next) return navigateTo(next.fields.slug)
+        return
+      }
+      this.select(imageIndex + 1)
+    }
+  }
+
+  componentDidMount = () => {
+    document.addEventListener('keydown', this.handleKeyDown)
+  }
+
+  componentWillUnmount = () => {
+    document.removeEventListener('keydown', this.handleKeyDown)
+  }
 
   render() {
     const { images, next, previous } = this.props
@@ -50,24 +104,34 @@ class DesktopPhotos extends React.Component {
     )
 
     return (
-      <Hoverable className="trip__images trip__images--desktop">
-        {arrowLeft}
-        {arrowRight}
-        <ImageDots
-          length={images.length}
-          select={this.select}
-          selectedIndex={imageIndex}
-        />
-        {images.map(({ node }, i) => (
-          <SelectedImage
-            className="trip__image"
-            pose={i === imageIndex ? 'visible' : 'hidden'}
-            key={i}
-          >
-            <Img sizes={node.sizes} key={i} />
-          </SelectedImage>
-        ))}
-      </Hoverable>
+      <PoseGroup animateOnMount={true}>
+        <Hoverable className="trip__images trip__images--desktop" key="child">
+          {arrowLeft}
+          {arrowRight}
+          <ImageDots
+            length={images.length}
+            select={this.select}
+            selectedIndex={imageIndex}
+          />
+          {images.map(({ node }, i) => (
+            <SelectedImage
+              className="trip__image"
+              pose={i === imageIndex ? 'visible' : 'hidden'}
+              key={i}
+            >
+              <Img sizes={node.sizes} key={i} />
+            </SelectedImage>
+          ))}
+          <StaggerChildren className="trip__reveal-wrap">
+            <Reveal
+              className="trip__reveal"
+              background="#5f6d77"
+              key="reveal-color"
+            />
+            <Reveal className="trip__reveal" key="reveal-white" />
+          </StaggerChildren>
+        </Hoverable>
+      </PoseGroup>
     )
   }
 }

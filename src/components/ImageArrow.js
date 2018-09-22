@@ -8,7 +8,8 @@ const Grow = posed.div({
   },
   hover: {
     width: 'auto',
-    beforeChildren: true
+    beforeChildren: true,
+    staggerChilren: 100
   }
 })
 const Fade = posed.div({
@@ -16,7 +17,8 @@ const Fade = posed.div({
     opacity: ({ from = 0 }) => from
   },
   hover: {
-    opacity: ({ to = 1 }) => to
+    opacity: ({ to = 1 }) => to,
+    staggerChilren: 100
   }
 })
 const Hoverable = posed.div({
@@ -25,7 +27,8 @@ const Hoverable = posed.div({
     opacity: 0.7
   },
   hover: {
-    opacity: 0.9
+    opacity: 0.9,
+    staggerChilren: 100
   }
 })
 
