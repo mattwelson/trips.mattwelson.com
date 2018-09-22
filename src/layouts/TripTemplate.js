@@ -11,7 +11,8 @@ import DesktopPhotos from '../components/DesktopPhotos'
 
 const StaggerChildren = posed.div({
   enter: {
-    staggerChildren: 100
+    staggerChildren: 100,
+    delayChildren: 300
   }
 })
 const FadeDown = posed.div({
@@ -46,7 +47,7 @@ export const TripTemplate = ({
     <div className="app">
       {helmet || ''}
       {others && <Menu trips={others} activeSlug={activeSlug} />}
-      <PoseGroup animateOnMount={true}>
+      <PoseGroup>
         <StaggerChildren key="trip">
           <section className="trip">
             <div className="details">

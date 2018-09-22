@@ -4,10 +4,12 @@ import posed from 'react-pose'
 
 const Grow = posed.div({
   init: {
-    width: 0
+    width: 0,
+    afterChildren: true
   },
   hover: {
-    width: 'auto'
+    width: 'auto',
+    beforeChildren: true
   }
 })
 

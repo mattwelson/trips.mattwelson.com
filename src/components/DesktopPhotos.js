@@ -1,6 +1,6 @@
 import React from 'react'
 import Img from 'gatsby-image'
-import posed, { PoseGroup } from 'react-pose'
+import posed from 'react-pose'
 import { navigate } from 'gatsby'
 
 import ImageArrow from './ImageArrow'
