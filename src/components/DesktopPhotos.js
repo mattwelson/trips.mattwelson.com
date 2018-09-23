@@ -105,8 +105,6 @@ class DesktopPhotos extends React.Component {
 
     return (
       <PhotoWrapper className="trip__images trip__images--desktop" key="child">
-        {arrowLeft}
-        {arrowRight}
         <ImageDots
           length={images.length}
           select={this.select}
@@ -121,6 +119,8 @@ class DesktopPhotos extends React.Component {
             <Img sizes={node.sizes} key={i} />
           </SelectedImage>
         ))}
+        {arrowLeft}
+        {arrowRight}
         <StaggerChildren className="trip__reveal-wrap">
           <Reveal
             className="trip__reveal"
