@@ -38,7 +38,6 @@ export const TripTemplate = ({
   others,
   next,
   previous,
-  cms,
   activeSlug
 }) => {
   const PostContent = contentComponent || Content
@@ -70,28 +69,15 @@ export const TripTemplate = ({
               <DirectionArrow target={next} />
             </FadeDown>
           </div>
-          {!cms && (
-            <DesktopPhotos images={images} next={next} previous={previous} />
-          )}
-          {!cms && (
-            <div className="trip__images trip__images--mobile">
-              {images.map(({ node }, i) => (
-                <div className="trip__image" key={i}>
-                  <Img key={node.originalName} sizes={node.sizes} />
-                </div>
-              ))}
-            </div>
-          )}
-          {cms && (
-            <div className="trip__images trip__images--cms">
-              {images &&
-                images.map((image, i) => (
-                  <div className="trip__image" key={i}>
-                    <img key={image} src={image} alt="" />
-                  </div>
-                ))}
-            </div>
-          )}
+          <DesktopPhotos images={images} next={next} previous={previous} />
+
+          <div className="trip__images trip__images--mobile">
+            {images.map(({ node }, i) => (
+              <div className="trip__image" key={i}>
+                <Img key={node.originalName} sizes={node.sizes} />
+              </div>
+            ))}
+          </div>
         </section>
       </StaggerChildren>
     </div>
