@@ -116,7 +116,7 @@ class DesktopPhotos extends React.Component {
             pose={i === imageIndex ? 'visible' : 'hidden'}
             key={i}
           >
-            <Img sizes={node.sizes} key={i} />
+            <Img fluid={node.fluid} key={i} />
           </SelectedImage>
         ))}
         {arrowLeft}

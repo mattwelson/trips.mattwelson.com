@@ -9,10 +9,20 @@ import Menu from '../components/Menu'
 import Content from '../components/Content'
 import DesktopPhotos from '../components/DesktopPhotos'
 
+// the applyAtStart stuff stops a weird affect where you'd see
+// a messy bounding box if there was a difference in image heights
 const StaggerChildren = posed.div({
   enter: {
     staggerChildren: 100,
-    delayChildren: 300
+    delayChildren: 300,
+    applyAtStart: {
+      display: 'grid'
+    }
+  },
+  exit: {
+    applyAtStart: {
+      display: 'none'
+    }
   }
 })
 const FadeDown = posed.div({
@@ -74,7 +84,7 @@ export const TripTemplate = ({
           <div className="trip__images trip__images--mobile">
             {images.map(({ node }, i) => (
               <div className="trip__image" key={i}>
-                <Img key={node.originalName} sizes={node.sizes} />
+                <Img key={node.originalName} fluid={node.fluid} />
               </div>
             ))}
           </div>

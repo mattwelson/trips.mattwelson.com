@@ -37,7 +37,7 @@ const SlideDown = posed.div({
   }
 })
 
-const MenuHeadings = posed.h1({
+const MenuHeadings = posed.div({
   hoverable: true,
   hover: {
     opacity: 1,
@@ -80,6 +80,7 @@ class Menu extends React.Component {
               {trips.map(({ node: trip }) => (
                 <MenuHeadings key={trip.fields.slug} className="menu__header">
                   <Link
+                    onClick={this.toggleMenu}
                     to={trip.fields.slug}
                     className={
                       activeSlug === trip.fields.slug
@@ -87,7 +88,13 @@ class Menu extends React.Component {
                         : ''
                     }
                   >
-                    {trip.frontmatter.title}
+                    <h4 className="menu__subtitle">
+                      {trip.frontmatter.date}
+                      {trip.frontmatter.subtitle
+                        ? ` - ${trip.frontmatter.subtitle}`
+                        : ''}
+                    </h4>
+                    <h1 className="menu__title">{trip.frontmatter.title}</h1>
                   </Link>
                 </MenuHeadings>
               ))}

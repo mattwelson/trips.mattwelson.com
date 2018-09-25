@@ -15,7 +15,7 @@ const Trip = ({ data }) => {
 
   const images = post.frontmatter.images.map(imgName =>
     data.images.edges.find(({ node }) => {
-      return imgName.indexOf(node.sizes.originalName) > -1
+      return imgName.indexOf(node.fluid.originalName) > -1
     })
   )
 
@@ -108,7 +108,9 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
+            date(formatString: "DD MMM")
             title
+            subtitle
           }
         }
       }
@@ -118,8 +120,8 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          sizes(quality: 90) {
-            ...GatsbyImageSharpSizes_withWebp
+          fluid(quality: 90) {
+            ...GatsbyImageSharpFluid_withWebp
             originalName
           }
           resize(width: 1200, height: 1200, quality: 90) {
