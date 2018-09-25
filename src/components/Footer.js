@@ -4,17 +4,21 @@ import settings from '../utils/settings'
 
 import posed from 'react-pose'
 
-const FadeIn = posed.div({
+const HardCut = posed.div({
   enter: {
-    opacity: 1
+    applyAtStart: {
+      display: 'block'
+    }
   },
   exit: {
-    opacity: 0
+    applyAtStart: {
+      display: 'none'
+    }
   }
 })
 
 const Footer = () => (
-  <FadeIn>
+  <HardCut>
     <footer>
       <p className="hiddenOnMobile">
         <b>Tip:</b> use your arrow keys to change the images!
@@ -46,7 +50,7 @@ const Footer = () => (
         <img src={githubLogo} className="footer__github" alt="Github link" />
       </a>
     </footer>
-  </FadeIn>
+  </HardCut>
 )
 
 export default Footer
