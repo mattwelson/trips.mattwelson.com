@@ -119,8 +119,11 @@ body {
   font-size: 0.7em;
 
   &.menu__item--active {
-    text-decoration: underline;
     color: lighten($accent, 10%);
+
+    h1 {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -131,6 +134,10 @@ body {
 .menu__subtitle {
   margin-bottom: 0;
   opacity: 0.6;
+
+  .menu__item--active & {
+    opacity: 1;
+  }
 }
 
 footer {
