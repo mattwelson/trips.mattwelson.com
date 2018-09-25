@@ -16,6 +16,9 @@ const FadeIn = posed.div({
 const Footer = () => (
   <FadeIn>
     <footer>
+      <p className="hiddenOnMobile">
+        <b>Tip:</b> use your arrow keys to change the images!
+      </p>
       <p>
         Site built by{' '}
         <a href={settings.twitter} target="_blank" rel="noopener noreferrer">
