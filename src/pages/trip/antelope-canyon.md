@@ -8,5 +8,4 @@ images:
   - /img/jumbotron.jpg
   - /img/flavor_wheel.jpg
 ---
-
-We saw a shoe! The shoe is _reeeeeally_ **big**!
+A beautiful slot canyon, we went to the lower portion with a guided tour. The tour was timed around the best sun rays for photography.
