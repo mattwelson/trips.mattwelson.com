@@ -6,5 +6,4 @@ date: '2018-08-25T17:19:05+12:00'
 images:
   - ../../img/jumbotron.jpg
 ---
-
-We saw a shoe! The shoe is _reeeeeally_ **big**!
+Horseshoe Bend was a must see destination for Alice! We had seen some beautiful photography. It's only a short walk from the carpark to the viewing area.
