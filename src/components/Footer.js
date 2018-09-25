@@ -21,7 +21,7 @@ const Footer = () => (
   <HardCut>
     <footer>
       <p className="hiddenOnMobile">
-        <b>Tip:</b> use your arrow keys to change the images!
+        <b>Tip:</b> use your arrow keys to change the images.
       </p>
       <p>
         Site built by{' '}
