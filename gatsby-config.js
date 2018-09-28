@@ -7,6 +7,7 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-netlify-cache',
+    'gatsby-plugin-polyfill-io',
     `gatsby-plugin-sass`,
     {
       resolve: `gatsby-plugin-typography`,
