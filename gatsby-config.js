@@ -70,6 +70,7 @@ module.exports = {
     },
     `gatsby-plugin-sitemap`,
     'gatsby-plugin-robots-txt',
+    'gatsby-plugin-polyfill-io',
     'gatsby-plugin-netlify' // make sure to keep it last in the array
   ]
 }
