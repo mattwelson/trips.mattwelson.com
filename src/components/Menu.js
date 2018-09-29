@@ -78,7 +78,10 @@ class Menu extends React.Component {
           <div className="menu__list">
             <div onClick={e => e.stopPropagation()}>
               {trips.map(({ node: trip }) => (
-                <MenuHeadings key={trip.fields.slug} className="menu__header">
+                <MenuHeadings
+                  key={trip.fields.slug}
+                  className="menu__header posed-fadeDown"
+                >
                   <Link
                     onClick={this.toggleMenu}
                     to={trip.fields.slug}

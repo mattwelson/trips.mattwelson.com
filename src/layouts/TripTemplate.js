@@ -60,21 +60,21 @@ export const TripTemplate = ({
         <section className="trip">
           <div className="details">
             <div className="">
-              <FadeDown>
+              <FadeDown className="posed-fadeDown">
                 <h4 className="trip__subtitle">
                   {date}
                   {subtitle ? ` - ${subtitle}` : ''}
                 </h4>
               </FadeDown>
-              <FadeDown>
+              <FadeDown className="posed-fadeDown">
                 <h1>{title}</h1>
               </FadeDown>
-              <FadeDown>{description}</FadeDown>
-              <FadeDown className="trip__description">
+              <FadeDown className="posed-fadeDown">{description}</FadeDown>
+              <FadeDown className="trip__description posed-fadeDown">
                 <PostContent content={content} />
               </FadeDown>
             </div>
-            <FadeDown className="buttons">
+            <FadeDown className="buttons posed-fadeDown">
               <DirectionArrow target={previous} direction="left" />
               <DirectionArrow target={next} />
             </FadeDown>

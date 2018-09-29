@@ -2,4 +2,9 @@
   .menu-toggle__wrapper {
     transform: scale(1) rotate(0) !important;
   }
+
+  .posed-fadeDown {
+    transform: translate(0) !important;
+    opacity: 1;
+  }
 }
