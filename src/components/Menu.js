@@ -65,7 +65,7 @@ class Menu extends React.Component {
     const { trips, activeSlug } = this.props
     return (
       <div className="menu__wrapper">
-        <MenuLink className="relative">
+        <MenuLink className="relative menu-toggle__wrapper">
           <h6 className="menu-toggle" onClick={this.toggleMenu}>
             TRIPS
           </h6>
