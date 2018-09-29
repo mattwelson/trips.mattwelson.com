@@ -5,11 +5,9 @@ export const onClientEntry = () => {
   // Get IE or Edge browser version
   var version = detectIE()
 
-  if (version === false) {
+  if (version === false || version >= 12) {
     document.body.classList.add('not-ie')
     return
-  } else if (version >= 12) {
-    document.body.classList.add('edge')
   } else {
     document.body.classList.add('ie')
   }

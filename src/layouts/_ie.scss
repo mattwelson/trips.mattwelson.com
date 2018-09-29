@@ -1,4 +1,14 @@
+.upgrade {
+  padding: 1em;
+  text-align: center;
+  color: white;
+}
+
 .ie {
+  .show-ie {
+    display: block;
+  }
+
   .menu-toggle__wrapper {
     transform: scale(1) rotate(0) !important;
   }
