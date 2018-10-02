@@ -123,6 +123,7 @@ export const pageQuery = graphql`
           fluid(quality: 90) {
             ...GatsbyImageSharpFluid_withWebp
             originalName
+            originalImg
           }
           resize(width: 1200, height: 1200, quality: 90) {
             src

@@ -114,7 +114,9 @@ class DesktopPhotos extends React.Component {
           <SelectedImage
             className="trip__image"
             pose={i === imageIndex ? 'visible' : 'hidden'}
+            style={i === imageIndex ? {} : { display: 'none' }}
             key={i}
+            onClick={() => (window.location = node.fluid.originalImg)}
           >
             <Img fluid={node.fluid} key={i} />
           </SelectedImage>
