@@ -27,6 +27,9 @@ body {
 .menu__wrapper {
   display: grid;
   justify-items: end;
+  grid-template-columns: minmax(0, 1500px);
+  justify-content: center;
+  padding: 1em 2em;
 }
 
 .menu-toggle {
