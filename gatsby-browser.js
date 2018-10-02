@@ -6,10 +6,11 @@ export const onClientEntry = () => {
   var version = detectIE()
 
   if (version === false || version >= 12) {
-    document.body.classList.add('not-ie')
     return
   } else {
-    document.body.classList.add('ie')
+    const node = document.querySelector('.not-ie')
+    node.classList.remove('not-ie')
+    node.classList.add('ie')
   }
 
   function detectIE() {

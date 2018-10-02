@@ -5,7 +5,7 @@ import Footer from '../components/Footer'
 import './all.scss'
 
 const Layout = ({ children, data }) => (
-  <div className="">
+  <div className="not-ie">
     <Helmet title="Matt Welson" />
     <div className="show-ie upgrade">
       You're using an out of date browser. Some parts of the site will not
