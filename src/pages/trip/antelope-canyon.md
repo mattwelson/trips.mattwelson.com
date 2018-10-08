@@ -6,5 +6,4 @@ date: '2018-10-09T17:19:05+12:00'
 images:
   - /img/chemex.jpg
 ---
-
-A nice placeholder.
+Our trip began with driving from our small town home to Wellington.
