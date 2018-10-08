@@ -17,7 +17,7 @@ export const TripTemplate = ({
       <div className="details">
         <div className="">
           <h4 className="trip__subtitle">
-            {date}
+            {date.toString()}
             {subtitle ? ` - ${subtitle}` : ''}
           </h4>
           <h1>{title}</h1>
