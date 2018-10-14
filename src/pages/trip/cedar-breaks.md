@@ -8,4 +8,4 @@ images:
   - /img/274a62db-04b1-408e-adf9-088e0c4d97f6.jpeg
   - /img/76c84503-7fa4-4d1d-9f66-0357be4029c7.jpeg
 ---
-Cedar Breaks was an unexpected treat between Zion and  Bryce.
+Cedar Breaks was an unexpected treat between Zion and  Bryce. Beautiful snowy canyons with a great lookout from the rim. It was only a slight detour and definitely worth it.
