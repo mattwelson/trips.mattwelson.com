@@ -2,7 +2,7 @@
 templateKey: trip
 title: Page
 subtitle: Arizona
-date: 2018-10-15T20:53:04.458Z
+date: 2018-10-14T20:53:04.458Z
 images:
   - /img/ee0c4ea1-25ba-4fbf-8a0f-108c324b8a39.jpeg
 ---
