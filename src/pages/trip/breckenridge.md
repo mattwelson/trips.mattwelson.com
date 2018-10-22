@@ -2,7 +2,7 @@
 templateKey: trip
 title: Breckenridge
 subtitle: Colorado
-date: 2018-10-22T23:41:51.602Z
+date: 2018-10-21T23:41:51.602Z
 images:
   - /img/01d7221f-6ad2-40bd-b659-f4edc3de13da.jpeg
   - /img/ea1f496c-b002-457a-be99-8d405501f7f4.jpeg
