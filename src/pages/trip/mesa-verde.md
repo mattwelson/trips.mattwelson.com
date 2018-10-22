@@ -2,7 +2,7 @@
 templateKey: trip
 title: Mesa Verde
 subtitle: Colorado
-date: 2018-10-22T16:37:26.945Z
+date: 2018-10-17T16:37:26.945Z
 images:
   - /img/33d01322-bf16-41e2-8d37-2e77c8f19246.jpeg
   - /img/21033ce2-2b24-432f-b38a-f483c40f9eaf.jpeg
