@@ -120,12 +120,12 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          fluid(quality: 90) {
+          fluid(quality: 95) {
             ...GatsbyImageSharpFluid_withWebp
             originalName
             originalImg
           }
-          resize(width: 1200, height: 1200, quality: 90) {
+          resize(width: 1200, height: 1200, quality: 95) {
             src
           }
         }
